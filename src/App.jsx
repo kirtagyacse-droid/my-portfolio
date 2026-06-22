@@ -1193,7 +1193,7 @@ function App() {
                 <img
                   src="/assets/ucrs_cattle_id.png"
                   alt="Real-time cattle identification CCTV detection feed"
-                  className="w-full h-48 object-cover object-top rounded filter brightness-90 group-hover:brightness-100 transition-all duration-300 select-none"
+                  className="w-full h-auto rounded filter brightness-90 group-hover:brightness-100 transition-all duration-300 select-none"
                 />
               </div>
             </div>
@@ -1214,7 +1214,7 @@ function App() {
                 <img
                   src="/assets/ucrs_milk_analysis.png"
                   alt="IoT sensor milk fat and SNF real-time analysis graph"
-                  className="w-full h-48 object-cover object-top rounded filter brightness-90 group-hover:brightness-100 transition-all duration-300 select-none"
+                  className="w-full h-auto rounded filter brightness-90 group-hover:brightness-100 transition-all duration-300 select-none"
                 />
               </div>
             </div>
@@ -1235,7 +1235,7 @@ function App() {
                 <img
                   src="/assets/ucrs_traceability.png"
                   alt="Artisanal ghee product traceability back to farm location"
-                  className="w-full h-48 object-cover object-top rounded filter brightness-90 group-hover:brightness-100 transition-all duration-300 select-none"
+                  className="w-full h-auto rounded filter brightness-90 group-hover:brightness-100 transition-all duration-300 select-none"
                 />
               </div>
             </div>
@@ -1256,7 +1256,7 @@ function App() {
                 <img
                   src="/assets/ucrs_pipeline.png"
                   alt="UCRS YOLOv8-seg OSNet computer vision pipeline architectural diagram"
-                  className="w-full h-48 object-cover object-top rounded filter brightness-90 group-hover:brightness-100 transition-all duration-300 select-none"
+                  className="w-full h-auto rounded filter brightness-90 group-hover:brightness-100 transition-all duration-300 select-none"
                 />
               </div>
             </div>
