@@ -47,6 +47,9 @@ function App() {
       } else if (window.location.hash === '#rssavoury') {
         setView('rssavoury')
         window.scrollTo(0, 0)
+      } else if (window.location.hash === '#ucrs') {
+        setView('ucrs')
+        window.scrollTo(0, 0)
       } else {
         setView('home')
       }
@@ -322,29 +325,34 @@ function App() {
               </div>
             </a>
 
-            {/* Project 3: OmniAgent (lg:col-span-3) */}
-            <div className="group linear-card-gradient linear-border rounded-lg p-6 flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300 lg:col-span-3 relative overflow-hidden">
+            {/* Project 3: UCRS - Dairy Monitoring System (lg:col-span-3) */}
+            <a
+              href="#ucrs"
+              className="group linear-card-gradient linear-border rounded-lg p-6 flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300 lg:col-span-3 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-48 h-48 bg-[#3B82F6]/4 rounded-bl-full pointer-events-none" />
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
                 <div className="lg:col-span-7 space-y-6">
                   <div className="space-y-4">
                     <div className="p-2.5 rounded-md bg-white/3 text-[#3B82F6] border border-white/5 w-fit">
-                      <Workflow className="w-5 h-5" />
+                      <Cpu className="w-5 h-5" />
                     </div>
                     
                     <div className="space-y-2">
-                      <h4 className="text-xl font-bold tracking-tight text-white group-hover:text-[#3B82F6] transition-colors">
-                        OmniAgent - Multi-Agent Workflow Engine
-                      </h4>
+                      <div className="flex items-center gap-2">
+                        <h4 className="text-xl font-bold tracking-tight text-white group-hover:text-[#3B82F6] transition-colors">
+                          UCRS - Dairy Monitoring System
+                        </h4>
+                        <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[9px] font-mono border border-emerald-500/20">Computer Vision</span>
+                      </div>
                       <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light font-sans">
-                        Visual node-based orchestrator utilizing the Antigravity SDK to coordinate multi-agent processes. Supports live logging, execution graph snapshots, and human-in-the-loop validation triggers.
+                        Enterprise computer vision and IoT platform for multi-camera cattle identification and milk quality traceability.
                       </p>
                     </div>
                   </div>
 
                   <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
-                    {['React Flow', 'Python', 'n8n', 'Gemini API', 'Docker'].map((tag) => (
+                    {['Python', 'YOLOv8-seg', 'OSNet', 'PostgreSQL', 'IoT'].map((tag) => (
                       <span key={tag} className="px-2 py-0.5 text-[10px] font-mono rounded bg-white/5 text-[#EDEDED]/70 border border-white/5">
                         {tag}
                       </span>
@@ -352,39 +360,39 @@ function App() {
                   </div>
                 </div>
 
-                {/* Interactive Simulation Panel */}
+                {/* Active CV Pipeline Visualization */}
                 <div className="lg:col-span-5 p-4 rounded-lg bg-[#050505] border border-white/5 space-y-4 font-mono text-xs select-none">
                   <div className="flex items-center justify-between border-b border-white/5 pb-2 text-[10px] text-[#EDEDED]/40">
                     <span className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                      ACTIVE_FLOW
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                      ACTIVE_PIPELINE
                     </span>
-                    <span>v1.2.0</span>
+                    <span className="text-emerald-400/70">&lt;200ms</span>
                   </div>
 
                   <div className="space-y-2.5">
                     <div className="flex items-center justify-between bg-white/3 p-2 rounded border border-white/5">
-                      <span className="text-[#3B82F6]">Node_1: Research_Agent</span>
+                      <span className="text-[#3B82F6]">Node_1: Detection_Agent</span>
                       <span className="text-emerald-400 text-[10px]">✔ SUCCESS</span>
                     </div>
                     <div className="flex justify-center my-0.5">
                       <ChevronRight className="w-4 h-4 text-[#EDEDED]/30 rotate-90" />
                     </div>
                     <div className="flex items-center justify-between bg-[#3B82F6]/5 p-2 rounded border border-[#3B82F6]/30">
-                      <span className="text-white">Node_2: Code_Gen_Agent</span>
+                      <span className="text-white">Node_2: ReID_Engine</span>
                       <span className="text-[#3B82F6] text-[10px] animate-pulse">● RUNNING</span>
                     </div>
                     <div className="flex justify-center my-0.5">
                       <ChevronRight className="w-4 h-4 text-[#EDEDED]/30 rotate-90" />
                     </div>
                     <div className="flex items-center justify-between bg-white/1 p-2 rounded border border-white/5 opacity-50">
-                      <span>Node_3: Verify_Agent</span>
+                      <span>Node_3: Traceability_Sync</span>
                       <span className="text-[#EDEDED]/30 text-[10px]">PENDING</span>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
 
           </div>
         </section>
@@ -1014,9 +1022,363 @@ function App() {
     </div>
   )
 
+  // UCRS Project Details Page View
+  const renderUCRS = () => (
+    <div className="min-h-screen bg-[#050505] selection:bg-[#3B82F6]/30 selection:text-white flex flex-col font-sans relative overflow-hidden">
+      
+      {/* Decorative Glow Elements */}
+      <div className="absolute top-0 right-1/4 w-[700px] h-[700px] bg-[#3B82F6]/5 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-[500px] h-[500px] bg-emerald-500/3 rounded-full blur-[130px] pointer-events-none" />
+
+      {/* Navigation Header */}
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-[#050505]/80 border-b border-white/5 transition-all">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="#" className="flex items-baseline gap-2 group">
+            <span className="text-2xl font-extrabold tracking-tight text-white group-hover:text-[#3B82F6] transition-colors">KT RAO</span>
+            <span className="text-xs italic text-[#EDEDED]/50 font-light tracking-wide">Kirtagya</span>
+          </a>
+          <a 
+            href="#" 
+            className="flex items-center gap-2 text-xs font-semibold text-[#EDEDED]/60 hover:text-white transition-colors px-3.5 py-2 rounded-lg border border-white/10 hover:border-white/20 bg-white/3"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Portfolio
+          </a>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="flex-grow max-w-6xl mx-auto px-6 py-12 md:py-20 space-y-20 md:space-y-28 relative z-10 w-full">
+
+        {/* ─── HERO SECTION ─── */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-6 space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono font-medium">
+              <Cpu className="w-3.5 h-3.5" />
+              Computer Vision &amp; IoT Platform
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+              UCRS: Enterprise Cattle Identification &amp; Quality Traceability.
+            </h1>
+
+            <p className="text-lg text-[#EDEDED]/70 font-light leading-relaxed">
+              A multi-camera computer vision and IoT platform for modernizing artisanal dairy production.
+            </p>
+
+            <div className="flex items-center gap-3 pt-1">
+              <span className="flex items-center gap-1.5 text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                MVP Phase
+              </span>
+              <span className="text-[#EDEDED]/30 text-xs font-mono">99.1% ReID Accuracy</span>
+              <span className="text-[#EDEDED]/30 text-xs font-mono">&lt;200ms Latency</span>
+            </div>
+
+            <div className="flex flex-wrap gap-4 pt-2">
+              <a
+                href="mailto:kirtagya.rao@gmail.com?subject=UCRS%20Technical%20Documentation%20Request"
+                className="inline-flex items-center justify-center px-5 py-3 rounded-lg text-sm font-semibold bg-[#3B82F6] text-white hover:bg-[#3B82F6]/90 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] transition-all duration-300"
+              >
+                <Mail className="w-4 h-4 mr-2" />
+                Request Documentation
+              </a>
+              <a
+                href="https://github.com/kirtagya"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-5 py-3 rounded-lg text-sm font-semibold border border-white/10 hover:border-white/20 text-[#EDEDED] hover:bg-white/3 transition-all"
+              >
+                <GithubIcon className="w-4 h-4 mr-2" />
+                View GitHub
+              </a>
+            </div>
+          </div>
+
+          {/* Hero Image — Cattle ID Dashboard */}
+          <div className="lg:col-span-6 flex justify-center">
+            <div className="w-full max-w-xl rounded-xl overflow-hidden border border-white/10 bg-[#0b0b0b] shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300 group">
+              <div className="flex items-center gap-1.5 px-4 py-3 bg-[#0c0c0c] border-b border-white/5">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+                <span className="text-[10px] font-mono text-[#EDEDED]/30 ml-4">Real-time Cattle Identification — LIVE FEED</span>
+              </div>
+              <div className="p-1.5 bg-[#050505]">
+                <img
+                  src="/assets/ucrs_cattle_id.png"
+                  alt="UCRS Real-time Cattle Identification Dashboard"
+                  className="w-full h-auto rounded-lg select-none filter brightness-95 group-hover:brightness-100 transition-all duration-300"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── ARCHITECTURE SECTION ─── */}
+        <section className="space-y-10 border-t border-white/5 pt-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div className="lg:col-span-5 space-y-6">
+              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-mono text-[#3B82F6] font-bold">
+                <span>The Technical Core</span>
+              </div>
+              <h2 className="text-3xl font-extrabold tracking-tight text-white">Engineering the Pipeline.</h2>
+              <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light">
+                UCRS runs a two-stage deep learning pipeline. <span className="text-white font-medium">YOLOv8-seg</span> performs real-time instance segmentation on each CCTV frame — isolating and masking individual animals at 30fps.
+              </p>
+              <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light">
+                Each detected silhouette is passed to <span className="text-white font-medium">OSNet (Omni-Scale Network)</span>, which encodes the animal's coat texture, body structure, and markings into a compact <span className="text-emerald-400 font-medium">512-dimensional embedding vector</span> — a permanent digital fingerprint.
+              </p>
+              <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light">
+                This fingerprint is matched against the farm's herd database using cosine similarity at sub-millisecond speed, guaranteeing <span className="text-white font-medium">100% accurate herd counting</span> even when animals move between cameras.
+              </p>
+
+              {/* Key Metrics */}
+              <div className="grid grid-cols-3 gap-3 pt-2">
+                {[
+                  { label: 'Embedding Dims', value: '512' },
+                  { label: 'ReID Accuracy', value: '99.1%' },
+                  { label: 'Pipeline Latency', value: '<200ms' }
+                ].map((m) => (
+                  <div key={m.label} className="p-3 rounded-lg bg-white/3 border border-white/5 text-center space-y-1">
+                    <div className="text-xl font-black text-[#3B82F6] tracking-tight">{m.value}</div>
+                    <div className="text-[9px] uppercase tracking-wider font-mono text-[#EDEDED]/40">{m.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Pipeline Diagram */}
+            <div className="lg:col-span-7">
+              <div className="rounded-xl overflow-hidden border border-white/10 bg-[#0b0b0b] shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300 group">
+                <div className="flex items-center gap-1.5 px-4 py-3 bg-[#0c0c0c] border-b border-white/5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#EDEDED]/30"></div>
+                  <div className="w-12 h-1.5 rounded-full bg-[#EDEDED]/10"></div>
+                  <span className="text-[10px] font-mono text-[#EDEDED]/30 ml-auto">UCRS Computer Vision Architecture</span>
+                </div>
+                <img
+                  src="/assets/ucrs_pipeline.png"
+                  alt="UCRS YOLOv8-seg + OSNet Computer Vision Pipeline Architecture Diagram"
+                  className="w-full h-auto rounded-b select-none filter brightness-95 group-hover:brightness-100 transition-all duration-300"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── BENTO FEATURE GRID ─── */}
+        <section className="space-y-10 border-t border-white/5 pt-16">
+          <div className="space-y-2 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-mono text-[#3B82F6] font-bold">
+              <span>Feature Tour</span>
+            </div>
+            <h2 className="text-3xl font-extrabold tracking-tight text-white">Four Pillars of Intelligence.</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            {/* Feature 1: Computer Vision Detection */}
+            <div className="group linear-card-gradient linear-border rounded-xl p-6 flex flex-col gap-5 hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono font-medium text-[#3B82F6]/80 bg-[#3B82F6]/10 px-2 py-0.5 rounded">01 / DETECTION</span>
+                <Cpu className="w-4 h-4 text-[#EDEDED]/30 group-hover:text-[#3B82F6] transition-colors" />
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-lg font-bold text-white tracking-tight">Computer Vision Detection</h3>
+                <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light">
+                  Multi-camera CCTV streams are processed in real-time. YOLOv8-seg segments every individual animal per frame, enabling accurate headcounts and activity logging without manual intervention.
+                </p>
+              </div>
+              <div className="rounded-lg overflow-hidden border border-white/5 bg-[#050505] p-1 hover:border-white/10 transition-colors">
+                <img
+                  src="/assets/ucrs_cattle_id.png"
+                  alt="Real-time cattle identification CCTV detection feed"
+                  className="w-full h-48 object-cover object-top rounded filter brightness-90 group-hover:brightness-100 transition-all duration-300 select-none"
+                />
+              </div>
+            </div>
+
+            {/* Feature 2: IoT Milk Analysis */}
+            <div className="group linear-card-gradient linear-border rounded-xl p-6 flex flex-col gap-5 hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono font-medium text-[#3B82F6]/80 bg-[#3B82F6]/10 px-2 py-0.5 rounded">02 / IOT ANALYTICS</span>
+                <TrendingUp className="w-4 h-4 text-[#EDEDED]/30 group-hover:text-[#3B82F6] transition-colors" />
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-lg font-bold text-white tracking-tight">IoT Milk Quality Analysis</h3>
+                <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light">
+                  Inline IoT sensors capture Fat %, SNF, and protein levels at every milking event. Data is bound to the identified animal's fingerprint — enabling per-cow quality trends over time.
+                </p>
+              </div>
+              <div className="rounded-lg overflow-hidden border border-white/5 bg-[#050505] p-1 hover:border-white/10 transition-colors">
+                <img
+                  src="/assets/ucrs_milk_analysis.png"
+                  alt="IoT sensor milk fat and SNF real-time analysis graph"
+                  className="w-full h-48 object-cover object-top rounded filter brightness-90 group-hover:brightness-100 transition-all duration-300 select-none"
+                />
+              </div>
+            </div>
+
+            {/* Feature 3: End-to-End Traceability */}
+            <div className="group linear-card-gradient linear-border rounded-xl p-6 flex flex-col gap-5 hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono font-medium text-[#3B82F6]/80 bg-[#3B82F6]/10 px-2 py-0.5 rounded">03 / TRACEABILITY</span>
+                <MapPin className="w-4 h-4 text-[#EDEDED]/30 group-hover:text-[#3B82F6] transition-colors" />
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-lg font-bold text-white tracking-tight">End-to-End Traceability</h3>
+                <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light">
+                  Every ghee or dairy batch is cryptographically linked to the source animal, milking session, and farm GPS coordinates — giving consumers and auditors a full chain of custody from field to jar.
+                </p>
+              </div>
+              <div className="rounded-lg overflow-hidden border border-white/5 bg-[#050505] p-1 hover:border-white/10 transition-colors">
+                <img
+                  src="/assets/ucrs_traceability.png"
+                  alt="Artisanal ghee product traceability back to farm location"
+                  className="w-full h-48 object-cover object-top rounded filter brightness-90 group-hover:brightness-100 transition-all duration-300 select-none"
+                />
+              </div>
+            </div>
+
+            {/* Feature 4: Technical Pipeline */}
+            <div className="group linear-card-gradient linear-border rounded-xl p-6 flex flex-col gap-5 hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono font-medium text-[#3B82F6]/80 bg-[#3B82F6]/10 px-2 py-0.5 rounded">04 / PIPELINE</span>
+                <Workflow className="w-4 h-4 text-[#EDEDED]/30 group-hover:text-[#3B82F6] transition-colors" />
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-lg font-bold text-white tracking-tight">Technical Pipeline</h3>
+                <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light">
+                  Raw CCTV frames flow through YOLOv8-seg for segmentation, a Kalman filter for cross-frame tracking, and OSNet for Re-ID embedding — all persisted to PostgreSQL for audit-ready event logs.
+                </p>
+              </div>
+              <div className="rounded-lg overflow-hidden border border-white/5 bg-[#050505] p-1 hover:border-white/10 transition-colors">
+                <img
+                  src="/assets/ucrs_pipeline.png"
+                  alt="UCRS YOLOv8-seg OSNet computer vision pipeline architectural diagram"
+                  className="w-full h-48 object-cover object-top rounded filter brightness-90 group-hover:brightness-100 transition-all duration-300 select-none"
+                />
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* ─── BUSINESS OUTCOME ─── */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center border-t border-white/5 pt-16">
+          <div className="lg:col-span-5 space-y-6">
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-mono text-[#3B82F6] font-bold">
+              <span>Business Outcome</span>
+            </div>
+            <h2 className="text-3xl font-extrabold tracking-tight text-white">Why UCRS?</h2>
+            <ul className="space-y-4">
+              {[
+                { text: 'Reduced supply chain fraud through cryptographic batch-to-animal linkage — no more unverifiable provenance claims.', badge: 'Fraud Prevention' },
+                { text: 'Automated production alerts driven by real-time herd inventory and per-cow yield data, eliminating manual stock checks.', badge: 'Operations' },
+                { text: 'Data-driven quality control for artisanal dairy — Fat % and SNF analytics deliver the consistency consumers expect at scale.', badge: 'Quality' }
+              ].map((item, idx) => (
+                <li key={idx} className="flex items-start gap-3 p-4 rounded-lg bg-white/2 border border-white/5 hover:border-[#3B82F6]/20 hover:bg-[#3B82F6]/3 transition-all duration-200">
+                  <CheckCircle2 className="w-5 h-5 text-[#3B82F6] shrink-0 mt-0.5" />
+                  <div className="space-y-1">
+                    <span className="text-[9px] font-mono font-bold text-[#3B82F6] uppercase tracking-wider">{item.badge}</span>
+                    <p className="text-sm text-[#EDEDED]/80 leading-relaxed">{item.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Tech Stack Panel */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="linear-card-gradient linear-border rounded-xl p-8 space-y-6">
+              <div className="space-y-2">
+                <div className="text-xs uppercase tracking-[0.2em] font-mono text-[#EDEDED]/40 font-bold">Engineering Stack</div>
+                <h3 className="text-2xl font-extrabold tracking-tight text-white">Built with the best tools for the job.</h3>
+                <p className="text-sm text-[#EDEDED]/50 leading-relaxed font-light">
+                  Python, YOLOv8-seg, OSNet, PostgreSQL, and IoT integration — every component chosen for production-grade performance in low-latency embedded environments.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {[
+                  { name: 'Python', role: 'Core Runtime' },
+                  { name: 'YOLOv8-seg', role: 'Detection' },
+                  { name: 'OSNet ReID', role: 'Fingerprinting' },
+                  { name: 'Kalman Filter', role: 'Tracking' },
+                  { name: 'PostgreSQL', role: 'Event Store' },
+                  { name: 'IoT Sensors', role: 'Milk QC' }
+                ].map((tech) => (
+                  <div key={tech.name} className="p-3 rounded-lg bg-[#050505] border border-white/5 hover:border-[#3B82F6]/30 hover:bg-[#3B82F6]/3 transition-all duration-200 cursor-default group">
+                    <div className="text-sm font-semibold text-white group-hover:text-[#3B82F6] transition-colors">{tech.name}</div>
+                    <div className="text-[9px] font-mono text-[#EDEDED]/40 uppercase tracking-wide mt-0.5">{tech.role}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── CALL TO ACTION ─── */}
+        <section className="linear-card-gradient linear-border rounded-xl p-10 md:p-14 text-center space-y-8 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.07),transparent_70%)] pointer-events-none" />
+
+          <div className="max-w-2xl mx-auto space-y-4 relative z-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              Currently in MVP Phase
+            </div>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+              Request technical documentation or partner with us.
+            </h2>
+            <p className="text-sm md:text-base text-[#EDEDED]/60 leading-relaxed font-light">
+              UCRS is actively seeking pilot partnerships with dairy cooperatives and agri-tech investors. Reach out to explore integration or review full system architecture.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center items-center gap-4 relative z-10">
+            <a
+              href="mailto:kirtagya.rao@gmail.com?subject=UCRS%20Partnership%20Inquiry"
+              className="inline-flex items-center justify-center px-8 py-3.5 bg-white text-black font-semibold rounded-lg text-sm hover:bg-[#EDEDED] transition-colors shadow-lg"
+            >
+              <Mail className="w-4 h-4 mr-2" />
+              Partner with Us
+            </a>
+            <a
+              href="https://github.com/kirtagya"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-8 py-3.5 border border-white/10 text-white font-semibold rounded-lg text-sm hover:border-[#3B82F6] hover:bg-[#3B82F6]/5 transition-colors"
+            >
+              <GithubIcon className="w-4 h-4 mr-2 text-[#EDEDED]/60" />
+              GitHub Repo
+            </a>
+          </div>
+        </section>
+
+      </main>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/5 py-8 bg-[#050505]">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#EDEDED]/40 font-mono gap-4">
+          <div className="flex items-center gap-2">
+            <span>&copy; {new Date().getFullYear()} KT RAO. All rights reserved.</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+              Production-Grade Build
+            </span>
+            <a href="#" className="hover:text-white transition-colors">Portfolio</a>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  )
+
   return (
     <>
-      {view === 'proofstudio' ? renderProofStudio() : view === 'rssavoury' ? renderRSSavoury() : renderHome()}
+      {view === 'proofstudio' ? renderProofStudio() : view === 'rssavoury' ? renderRSSavoury() : view === 'ucrs' ? renderUCRS() : renderHome()}
 
       {/* WORKFLOW MODAL DIALOG */}
       {isWorkflowOpen && (
