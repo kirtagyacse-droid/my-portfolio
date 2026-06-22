@@ -1,0 +1,1164 @@
+import React, { useState, useEffect } from 'react'
+import { 
+  ArrowUpRight, 
+  Mail, 
+  Layers, 
+  Cpu, 
+  Workflow, 
+  ShieldCheck, 
+  ExternalLink,
+  ChevronRight,
+  X,
+  ArrowLeft,
+  CheckCircle2,
+  Zap,
+  Settings,
+  FileText,
+  Play,
+  ShoppingBag,
+  TrendingUp,
+  MapPin,
+  Truck
+} from 'lucide-react'
+
+// Custom SVGs for brand icons
+const GithubIcon = ({ className = "w-5 h-5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+  </svg>
+)
+
+const LinkedinIcon = ({ className = "w-5 h-5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+  </svg>
+)
+
+function App() {
+  const [view, setView] = useState('home')
+  const [isWorkflowOpen, setIsWorkflowOpen] = useState(false)
+  const [activeWorkflowProj, setActiveWorkflowProj] = useState('proofstudio') // 'proofstudio' or 'rssavoury'
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === '#proofstudio') {
+        setView('proofstudio')
+        window.scrollTo(0, 0)
+      } else if (window.location.hash === '#rssavoury') {
+        setView('rssavoury')
+        window.scrollTo(0, 0)
+      } else {
+        setView('home')
+      }
+    }
+    
+    window.addEventListener('hashchange', handleHashChange)
+    handleHashChange() // run initially
+    
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
+
+  const openWorkflow = (proj) => {
+    setActiveWorkflowProj(proj)
+    setIsWorkflowOpen(true)
+  }
+
+  // Main Portfolio View
+  const renderHome = () => (
+    <div className="min-h-screen linear-gradient-bg selection:bg-[#3B82F6]/30 selection:text-white flex flex-col font-sans relative overflow-hidden">
+      {/* Background Decorative Glows */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#3B82F6]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#3B82F6]/3 rounded-full blur-[100px] pointer-events-none" />
+
+      {/* Navigation Header */}
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-[#050505]/70 border-b border-white/5 transition-all duration-300">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="#hero" className="flex items-baseline gap-2 group">
+            <span className="text-2xl font-extrabold tracking-tight text-white group-hover:text-[#3B82F6] transition-colors">KT RAO</span>
+            <span className="text-xs italic text-[#EDEDED]/50 font-light tracking-wide">Kirtagya</span>
+          </a>
+
+          <nav className="hidden md:flex items-center space-x-8 text-sm font-medium text-[#EDEDED]/70">
+            <a href="#tech" className="hover:text-white transition-colors">Tech Stack</a>
+            <a href="#projects" className="hover:text-white transition-colors">Projects</a>
+            <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+          </nav>
+
+          <div className="flex items-center space-x-4">
+            <a 
+              href="https://github.com/kirtagya" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-[#EDEDED]/60 hover:text-white transition-colors p-1"
+              aria-label="GitHub Profile"
+            >
+              <GithubIcon className="w-5 h-5" />
+            </a>
+            <a 
+              href="https://linkedin.com/in/kirtagya" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-[#EDEDED]/60 hover:text-white transition-colors p-1"
+              aria-label="LinkedIn Profile"
+            >
+              <LinkedinIcon className="w-5 h-5" />
+            </a>
+            <a 
+              href="#contact" 
+              className="hidden sm:inline-flex items-center justify-center px-4 py-2 border border-white/10 rounded-md text-xs font-semibold text-white hover:border-[#3B82F6] hover:bg-[#3B82F6]/5 transition-all"
+            >
+              Get in Touch
+            </a>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Container */}
+      <main className="flex-grow max-w-6xl mx-auto px-6 py-12 md:py-24 space-y-24 md:space-y-36 relative z-10 w-full">
+        
+        {/* HERO SECTION */}
+        <section id="hero" className="space-y-8 md:space-y-12 pt-4 md:pt-12">
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 text-[#3B82F6] text-xs font-semibold tracking-wide uppercase font-mono">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] animate-pulse"></span>
+              Available for Freelance
+            </div>
+            
+            <h1 className="flex items-baseline flex-wrap gap-x-4 gap-y-2 font-sans select-none">
+              <span className="text-6xl sm:text-7xl md:text-8xl font-black tracking-tighter text-white leading-none">
+                KT RAO
+              </span>
+              <span className="text-2xl sm:text-3xl md:text-4xl italic text-[#EDEDED]/40 font-light tracking-tight">
+                Kirtagya
+              </span>
+            </h1>
+          </div>
+
+          <div className="max-w-3xl space-y-6">
+            <p className="text-xl sm:text-2xl md:text-3xl text-[#EDEDED]/80 font-light leading-normal tracking-tight">
+              Bridging <span className="text-white font-medium underline decoration-[#3B82F6] decoration-2 underline-offset-4">AI and Automation</span> to ship production-grade software.
+            </p>
+            <p className="text-sm sm:text-base text-[#EDEDED]/50 max-w-2xl leading-relaxed">
+              Full-stack engineer focusing on clean, scalable serverless architectures, custom machine learning pipelines, and visual workflow logic that drives real business outcomes.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <a 
+              href="mailto:kirtagya.rao@gmail.com?subject=Discovery%20Call%20Request"
+              className="group inline-flex items-center justify-center px-6 py-3.5 border border-[#EDEDED]/10 rounded-lg text-sm font-medium text-white hover:border-[#3B82F6] hover:bg-[#3B82F6]/5 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-300 w-full sm:w-auto"
+            >
+              <span>Book a Discovery Call</span>
+              <ArrowUpRight className="ml-2 w-4 h-4 text-[#EDEDED]/60 group-hover:text-[#3B82F6] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+            </a>
+            <a 
+              href="#projects"
+              className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-medium text-[#EDEDED]/60 hover:text-white transition-colors w-full sm:w-auto"
+            >
+              View Projects
+            </a>
+          </div>
+        </section>
+
+        {/* TECH STACK */}
+        <section id="tech" className="space-y-6">
+          <div className="flex items-center gap-3">
+            <div className="w-1.5 h-1.5 bg-[#3B82F6] rounded-full"></div>
+            <h2 className="text-xs uppercase tracking-[0.2em] font-mono text-[#EDEDED]/40 font-bold">Current Focus Stack</h2>
+          </div>
+          
+          <div className="flex flex-wrap gap-2.5 max-w-4xl">
+            {[
+              { name: 'Next.js', category: 'Frontend' },
+              { name: 'Python', category: 'Backend/AI' },
+              { name: 'Prisma', category: 'Database' },
+              { name: 'n8n', category: 'Automation' },
+              { name: 'Vercel', category: 'DevOps' },
+              { name: 'Computer Vision', category: 'AI' }
+            ].map((tech) => (
+              <div 
+                key={tech.name} 
+                className="px-4 py-2 text-sm font-medium rounded-lg bg-[#0b0b0b] border border-white/5 text-[#EDEDED]/80 hover:border-[#3B82F6]/30 hover:text-white transition-all duration-200 cursor-default select-none flex items-center gap-2 group"
+              >
+                <span className="w-1 h-1 rounded-full bg-[#EDEDED]/20 group-hover:bg-[#3B82F6] transition-colors"></span>
+                <span>{tech.name}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* PROJECTS SECTION - BENTO GRID */}
+        <section id="projects" className="space-y-12">
+          <div className="space-y-2">
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 bg-[#3B82F6] rounded-full"></div>
+              <h2 className="text-xs uppercase tracking-[0.2em] font-mono text-[#EDEDED]/40 font-bold">Featured Projects</h2>
+            </div>
+            <h3 className="text-3xl font-extrabold tracking-tight text-white">Shaped for Performance</h3>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            {/* Project 1: ProofStudio (lg:col-span-1) */}
+            <a 
+              href="#proofstudio"
+              className="group linear-card-gradient linear-border rounded-lg p-6 flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300 relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#3B82F6]/2 rounded-bl-full pointer-events-none" />
+              
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div className="p-2.5 rounded-md bg-white/3 text-[#3B82F6] border border-white/5">
+                    <Cpu className="w-5 h-5" />
+                  </div>
+                  <span className="text-[#EDEDED]/40 group-hover:text-white transition-colors">
+                    <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <h4 className="text-xl font-bold tracking-tight text-white group-hover:text-[#3B82F6] transition-colors">
+                      ProofStudio
+                    </h4>
+                    <span className="px-2 py-0.5 rounded-full bg-[#3B82F6]/10 text-[#3B82F6] text-[9px] font-mono border border-[#3B82F6]/20">SaaS Case Study</span>
+                  </div>
+                  <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light font-sans">
+                    SaaS engine that transforms raw client testimonials into automated LinkedIn posts, structured case studies, and landing page copy.
+                  </p>
+                </div>
+              </div>
+
+              {/* Simulated Testimonial Transformation Visual */}
+              <div className="my-6 p-4 rounded bg-[#050505] border border-white/5 space-y-3.5 select-none font-mono text-[9px]">
+                <div className="flex items-center justify-between text-[#EDEDED]/40 border-b border-white/5 pb-1.5">
+                  <span className="flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]"></span>
+                    RAW WIN
+                  </span>
+                  <span>"In 8 weeks I got..."</span>
+                </div>
+                
+                <div className="space-y-2">
+                  <div className="text-[#EDEDED]/60 bg-white/2 p-2 rounded border border-white/5 leading-relaxed font-sans">
+                    "I went from zero interviews to 3 offers in 8 weeks..."
+                  </div>
+                  
+                  <div className="flex justify-center">
+                    <div className="inline-flex items-center gap-1 text-[#3B82F6] font-semibold tracking-wider text-[8px] bg-[#3B82F6]/10 px-2 py-0.5 rounded-full border border-[#3B82F6]/20">
+                      <Zap className="w-2.5 h-2.5 animate-pulse" />
+                      GEMINI AI
+                    </div>
+                  </div>
+
+                  <div className="text-white bg-[#3B82F6]/5 p-2 rounded border border-[#3B82F6]/20 leading-relaxed font-sans">
+                    <strong>Generated Post:</strong> Three job offers in 8 weeks. A 50% salary increase. Fully remote.
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+                {['Next.js', 'Prisma', 'SQLite', 'Gemini AI'].map((tag) => (
+                  <span key={tag} className="px-2 py-0.5 text-[10px] font-mono rounded bg-white/5 text-[#EDEDED]/70 border border-white/5">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </a>
+
+            {/* Project 2: Achar Project (lg:col-span-2) */}
+            <a 
+              href="#rssavoury"
+              className="group linear-card-gradient linear-border rounded-lg p-6 flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300 lg:col-span-2 relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-36 h-36 bg-[#3B82F6]/3 rounded-bl-full pointer-events-none" />
+
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div className="p-2.5 rounded-md bg-white/3 text-[#3B82F6] border border-white/5">
+                    <Layers className="w-5 h-5" />
+                  </div>
+                  <span className="text-[#EDEDED]/40 group-hover:text-white transition-colors">
+                    <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <h4 className="text-xl font-bold tracking-tight text-white group-hover:text-[#3B82F6] transition-colors">
+                      RS Savoury (Achar Project)
+                    </h4>
+                    <span className="px-2 py-0.5 rounded-full bg-[#3B82F6]/10 text-[#3B82F6] text-[9px] font-mono border border-[#3B82F6]/20">E-Commerce & Logistics</span>
+                  </div>
+                  <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light font-sans max-w-2xl">
+                    Full-stack e-commerce and logistics ecosystem built to scale traditional picklemaking manufacturing, bridging Jaipur consumer storefronts with dynamic operational admin hubs.
+                  </p>
+                </div>
+              </div>
+
+              {/* Grid visual component representing picklemaking operations */}
+              <div className="my-6 grid grid-cols-1 md:grid-cols-3 gap-3 select-none">
+                {[
+                  { title: 'Production Alert', status: 'Alert', count: 'Low Stock: Keri', color: 'text-rose-400' },
+                  { title: 'Kitchen Status', status: 'Active Targets', count: '10 Jars Left', color: 'text-[#3B82F6]' },
+                  { title: 'Revenue Tracker', status: 'Healthy', count: '₹1,950 Total', color: 'text-emerald-400' }
+                ].map((stat, i) => (
+                  <div key={i} className="p-3 rounded bg-[#050505] border border-white/5 space-y-1">
+                    <span className="text-[10px] uppercase tracking-wider font-mono text-[#EDEDED]/40">{stat.title}</span>
+                    <div className="flex items-baseline justify-between">
+                      <span className="text-sm font-semibold text-white">{stat.count}</span>
+                      <span className={`text-[9px] font-mono font-medium ${stat.color}`}>{stat.status}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+                {['Next.js', 'Prisma', 'Vercel', 'PostgreSQL', 'Google Maps API'].map((tag) => (
+                  <span key={tag} className="px-2 py-0.5 text-[10px] font-mono rounded bg-white/5 text-[#EDEDED]/70 border border-white/5">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </a>
+
+            {/* Project 3: OmniAgent (lg:col-span-3) */}
+            <div className="group linear-card-gradient linear-border rounded-lg p-6 flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300 lg:col-span-3 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-[#3B82F6]/4 rounded-bl-full pointer-events-none" />
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                <div className="lg:col-span-7 space-y-6">
+                  <div className="space-y-4">
+                    <div className="p-2.5 rounded-md bg-white/3 text-[#3B82F6] border border-white/5 w-fit">
+                      <Workflow className="w-5 h-5" />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <h4 className="text-xl font-bold tracking-tight text-white group-hover:text-[#3B82F6] transition-colors">
+                        OmniAgent - Multi-Agent Workflow Engine
+                      </h4>
+                      <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light font-sans">
+                        Visual node-based orchestrator utilizing the Antigravity SDK to coordinate multi-agent processes. Supports live logging, execution graph snapshots, and human-in-the-loop validation triggers.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+                    {['React Flow', 'Python', 'n8n', 'Gemini API', 'Docker'].map((tag) => (
+                      <span key={tag} className="px-2 py-0.5 text-[10px] font-mono rounded bg-white/5 text-[#EDEDED]/70 border border-white/5">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Interactive Simulation Panel */}
+                <div className="lg:col-span-5 p-4 rounded-lg bg-[#050505] border border-white/5 space-y-4 font-mono text-xs select-none">
+                  <div className="flex items-center justify-between border-b border-white/5 pb-2 text-[10px] text-[#EDEDED]/40">
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      ACTIVE_FLOW
+                    </span>
+                    <span>v1.2.0</span>
+                  </div>
+
+                  <div className="space-y-2.5">
+                    <div className="flex items-center justify-between bg-white/3 p-2 rounded border border-white/5">
+                      <span className="text-[#3B82F6]">Node_1: Research_Agent</span>
+                      <span className="text-emerald-400 text-[10px]">✔ SUCCESS</span>
+                    </div>
+                    <div className="flex justify-center my-0.5">
+                      <ChevronRight className="w-4 h-4 text-[#EDEDED]/30 rotate-90" />
+                    </div>
+                    <div className="flex items-center justify-between bg-[#3B82F6]/5 p-2 rounded border border-[#3B82F6]/30">
+                      <span className="text-white">Node_2: Code_Gen_Agent</span>
+                      <span className="text-[#3B82F6] text-[10px] animate-pulse">● RUNNING</span>
+                    </div>
+                    <div className="flex justify-center my-0.5">
+                      <ChevronRight className="w-4 h-4 text-[#EDEDED]/30 rotate-90" />
+                    </div>
+                    <div className="flex items-center justify-between bg-white/1 p-2 rounded border border-white/5 opacity-50">
+                      <span>Node_3: Verify_Agent</span>
+                      <span className="text-[#EDEDED]/30 text-[10px]">PENDING</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* LET'S CONNECT / CONTACT */}
+        <section id="contact" className="linear-card-gradient linear-border rounded-lg p-8 md:p-12 text-center space-y-8 relative overflow-hidden">
+          <div className="absolute inset-0 bg-radial at-center from-[#3B82F6]/5 to-transparent opacity-50 pointer-events-none" />
+          
+          <div className="max-w-2xl mx-auto space-y-4 relative z-10">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white">Let's build something exceptional.</h2>
+            <p className="text-sm md:text-base text-[#EDEDED]/60 leading-relaxed font-light">
+              I am currently accepting inquiries for engineering engagements, architectural consultations, and full-scale freelance software development.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center items-center gap-4 relative z-10">
+            <a 
+              href="mailto:kirtagya.rao@gmail.com?subject=Inquiry" 
+              className="inline-flex items-center justify-center px-6 py-3 bg-white text-black font-semibold rounded-lg text-sm hover:bg-[#EDEDED] transition-colors"
+            >
+              <Mail className="w-4 h-4 mr-2" />
+              kirtagya.rao@gmail.com
+            </a>
+            <a 
+              href="https://github.com/kirtagya" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center justify-center px-6 py-3 border border-white/10 text-white font-semibold rounded-lg text-sm hover:border-[#3B82F6] hover:bg-[#3B82F6]/5 transition-colors"
+            >
+              <GithubIcon className="w-4 h-4 mr-2 text-[#EDEDED]/60" />
+              GitHub
+            </a>
+            <a 
+              href="https://linkedin.com/in/kirtagya" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center justify-center px-6 py-3 border border-white/10 text-white font-semibold rounded-lg text-sm hover:border-[#3B82F6] hover:bg-[#3B82F6]/5 transition-colors"
+            >
+              <LinkedinIcon className="w-4 h-4 mr-2 text-[#EDEDED]/60" />
+              LinkedIn
+            </a>
+          </div>
+        </section>
+
+      </main>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/5 py-8 bg-[#050505]">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#EDEDED]/40 font-mono gap-4">
+          <div className="flex items-center gap-2">
+            <span>&copy; {new Date().getFullYear()} KT RAO. All rights reserved.</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+              Production-Grade Build
+            </span>
+            <span>Based in India</span>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  )
+
+  // ProofStudio Project Details Page View
+  const renderProofStudio = () => (
+    <div className="min-h-screen bg-[#050505] selection:bg-[#3B82F6]/30 selection:text-white flex flex-col font-sans relative overflow-hidden">
+      
+      {/* Decorative Glow Elements */}
+      <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#3B82F6]/4 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-[450px] h-[450px] bg-[#3B82F6]/2 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Navigation Header */}
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-[#050505]/80 border-b border-white/5 transition-all">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="#" className="flex items-baseline gap-2 group">
+            <span className="text-2xl font-extrabold tracking-tight text-white group-hover:text-[#3B82F6] transition-colors">KT RAO</span>
+            <span className="text-xs italic text-[#EDEDED]/50 font-light tracking-wide">Kirtagya</span>
+          </a>
+
+          <a 
+            href="#" 
+            className="flex items-center gap-2 text-xs font-semibold text-[#EDEDED]/60 hover:text-white transition-colors px-3.5 py-2 rounded-lg border border-white/10 hover:border-white/20 bg-white/3"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Portfolio
+          </a>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="flex-grow max-w-6xl mx-auto px-6 py-12 md:py-20 space-y-20 md:space-y-28 relative z-10 w-full">
+        
+        {/* HERO SECTION */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-6 space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 text-[#3B82F6] text-xs font-mono font-medium">
+              <Zap className="w-3.5 h-3.5" />
+              SaaS Project Case Study
+            </div>
+            
+            <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+              ProofStudio: From Raw Feedback to Viral Marketing.
+            </h1>
+            
+            <p className="text-lg text-[#EDEDED]/70 font-light leading-relaxed">
+              A SaaS engine that turns client testimonials into automated LinkedIn posts, case studies, and landing page copy.
+            </p>
+
+            <div className="flex flex-wrap gap-4 pt-2">
+              <button 
+                onClick={() => openWorkflow('proofstudio')}
+                className="inline-flex items-center justify-center px-5 py-3 rounded-lg text-sm font-semibold bg-[#3B82F6] text-white hover:bg-[#3B82F6]/90 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] transition-all duration-300"
+              >
+                <Workflow className="w-4 h-4 mr-2" />
+                View the Workflow
+              </button>
+              <a 
+                href="https://github.com/kirtagya" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center justify-center px-5 py-3 rounded-lg text-sm font-semibold border border-white/10 hover:border-white/20 text-[#EDEDED] hover:bg-white/3 transition-all"
+              >
+                <GithubIcon className="w-4 h-4 mr-2" />
+                View GitHub Repo
+              </a>
+            </div>
+          </div>
+
+          {/* Hero Image Mockup */}
+          <div className="lg:col-span-6 flex justify-center">
+            <div className="w-full max-w-lg rounded-xl overflow-hidden border border-white/10 bg-[#0b0b0b] shadow-2xl transition-all duration-300 hover:border-[#3B82F6]/30 group">
+              <div className="flex items-center gap-1.5 px-4 py-3 bg-[#0c0c0c] border-b border-white/5">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+                <span className="text-[10px] font-mono text-[#EDEDED]/30 ml-4">AI Case Study Generator Modal</span>
+              </div>
+              <div className="p-1.5 bg-[#050505]">
+                <img 
+                  src="/assets/Screenshot_20260622_205441.png" 
+                  alt="ProofStudio AI Case Study Generator Modal Mockup" 
+                  className="w-full h-auto rounded-lg select-none filter brightness-95 group-hover:brightness-100 transition-all duration-300"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FEATURE TOUR (BENTO GRID) */}
+        <section className="space-y-12">
+          <div className="space-y-2 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-mono text-[#3B82F6] font-bold">
+              <span>Feature Tour</span>
+            </div>
+            <h2 className="text-3xl font-extrabold tracking-tight text-white">Automating the Content Engine</h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            {/* Bento Card 1: Instant Content Generation */}
+            <div className="group linear-card-gradient linear-border rounded-lg p-6 flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300">
+              <div className="space-y-4">
+                <div className="inline-flex items-center justify-between w-full">
+                  <span className="text-xs font-mono font-medium text-[#3B82F6]/80 bg-[#3B82F6]/10 px-2 py-0.5 rounded">01 / DISTRIBUTION</span>
+                  <Settings className="w-4 h-4 text-[#EDEDED]/30 group-hover:text-[#3B82F6] transition-colors" />
+                </div>
+                <h3 className="text-lg font-bold text-white tracking-tight">Instant Content Generation</h3>
+                <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light">
+                  Showcases auto-generated LinkedIn post variations drafted from a single client win, ready to post and schedule.
+                </p>
+              </div>
+
+              <div className="mt-6 rounded-lg overflow-hidden border border-white/5 bg-[#050505] p-1 shadow-md hover:border-white/10 transition-colors">
+                <img 
+                  src="/assets/Screenshot_20260622_205119.png" 
+                  alt="Auto-generated LinkedIn posts dashboard screenshot" 
+                  className="w-full h-auto rounded filter brightness-90 group-hover:brightness-100 transition-all duration-300 select-none"
+                />
+              </div>
+            </div>
+
+            {/* Bento Card 2: Structured Storytelling */}
+            <div className="group linear-card-gradient linear-border rounded-lg p-6 flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300">
+              <div className="space-y-4">
+                <div className="inline-flex items-center justify-between w-full">
+                  <span className="text-xs font-mono font-medium text-[#3B82F6]/80 bg-[#3B82F6]/10 px-2 py-0.5 rounded">02 / LONG FORM</span>
+                  <FileText className="w-4 h-4 text-[#EDEDED]/30 group-hover:text-[#3B82F6] transition-colors" />
+                </div>
+                <h3 className="text-lg font-bold text-white tracking-tight">Structured Storytelling</h3>
+                <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light">
+                  Extracts raw customer wins into full-length case study frameworks and high-converting website landing page copies.
+                </p>
+              </div>
+
+              <div className="mt-6 rounded-lg overflow-hidden border border-white/5 bg-[#050505] p-1 shadow-md hover:border-white/10 transition-colors">
+                <img 
+                  src="/assets/Screenshot_20260622_205202.png" 
+                  alt="Case study and landing page content pack generation view" 
+                  className="w-full h-auto rounded filter brightness-90 group-hover:brightness-100 transition-all duration-300 select-none"
+                />
+              </div>
+            </div>
+
+            {/* Bento Card 3: Workflow Automation */}
+            <div className="group linear-card-gradient linear-border rounded-lg p-6 flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300">
+              <div className="space-y-4">
+                <div className="inline-flex items-center justify-between w-full">
+                  <span className="text-xs font-mono font-medium text-[#3B82F6]/80 bg-[#3B82F6]/10 px-2 py-0.5 rounded">03 / SHORT VIDEO</span>
+                  <Play className="w-4 h-4 text-[#EDEDED]/30 group-hover:text-[#3B82F6] transition-colors" />
+                </div>
+                <h3 className="text-lg font-bold text-white tracking-tight">Workflow Automation</h3>
+                <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light">
+                  Translates written reviews into dynamic short-form video scripts complete with screen cues and spoken scripts.
+                </p>
+              </div>
+
+              <div className="mt-6 rounded-lg overflow-hidden border border-white/5 bg-[#050505] p-1 shadow-md hover:border-white/10 transition-colors">
+                <img 
+                  src="/assets/Screenshot_20260622_205240.png" 
+                  alt="Video script content pack screen" 
+                  className="w-full h-auto rounded filter brightness-90 group-hover:brightness-100 transition-all duration-300 select-none"
+                />
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* THE "WHY" (THE OUTCOME) */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center border-t border-white/5 pt-16">
+          <div className="lg:col-span-5 space-y-6">
+            <h2 className="text-3xl font-extrabold tracking-tight text-white">Why ProofStudio?</h2>
+            
+            <ul className="space-y-4">
+              {[
+                "Transform raw testimonials into expert-level content in seconds.",
+                "Multi-channel delivery: Generate LinkedIn posts, long-form case studies, and video scripts from one input.",
+                "Gamified 'Getting Started' flow reduces user friction to absolute zero."
+              ].map((bullet, idx) => (
+                <li key={idx} className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#3B82F6] shrink-0 mt-0.5" />
+                  <span className="text-sm text-[#EDEDED]/80 leading-relaxed">{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="lg:col-span-7">
+            <div className="rounded-xl overflow-hidden border border-white/10 bg-[#0b0b0b] shadow-2xl p-1 hover:border-[#3B82F6]/30 transition-colors group">
+              <div className="flex items-center gap-1.5 px-3 py-2 bg-[#0c0c0c] border-b border-white/5 rounded-t-lg">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#EDEDED]/30"></div>
+                <div className="w-12 h-1.5 rounded-full bg-[#EDEDED]/10"></div>
+                <div className="text-[10px] font-mono text-[#EDEDED]/30 ml-auto">Interactive Getting Started Guide</div>
+              </div>
+              <img 
+                src="/assets/Screenshot_20260622_205002.png" 
+                alt="ProofStudio Getting Started Onboarding Flow" 
+                className="w-full h-auto rounded-b filter brightness-95 group-hover:brightness-100 transition-all duration-300 select-none"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* TECH STACK & TOOLS */}
+        <section className="text-center space-y-6 border-t border-white/5 pt-16">
+          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-mono text-[#EDEDED]/40">
+            <span>Engineering Stack</span>
+          </div>
+          <h2 className="text-3xl font-extrabold tracking-tight text-white max-w-2xl mx-auto">
+            Built with Next.js 16, Prisma, SQLite, and Gemini 2.5 Flash AI.
+          </h2>
+          <p className="text-sm text-[#EDEDED]/50 max-w-xl mx-auto leading-relaxed">
+            The platform is structured on an optimized local database model configured for sub-second database transactions and instant LLM completions.
+          </p>
+          <div className="pt-2">
+            <button 
+              onClick={() => openWorkflow('proofstudio')}
+              className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-white/10 hover:border-[#3B82F6] hover:bg-[#3B82F6]/5 text-white transition-all font-semibold"
+            >
+              <Workflow className="w-4 h-4 mr-2" />
+              View Pipeline Workflow Diagram
+            </button>
+          </div>
+        </section>
+
+        {/* Bottom CTA */}
+        <section className="linear-card-gradient linear-border rounded-lg p-8 md:p-12 text-center space-y-6 relative overflow-hidden">
+          <div className="absolute inset-0 bg-radial at-center from-[#3B82F6]/5 to-transparent opacity-50 pointer-events-none" />
+          
+          <div className="max-w-xl mx-auto space-y-3 relative z-10">
+            <h3 className="text-2xl font-bold text-white">Interested in automated social proof?</h3>
+            <p className="text-sm text-[#EDEDED]/60 font-light">
+              See the code in action or request a dedicated workflow demo tailored for your team's needs.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center items-center gap-4 relative z-10">
+            <a 
+              href="mailto:kirtagya.rao@gmail.com?subject=ProofStudio%20Demo%20Request" 
+              className="inline-flex items-center justify-center px-6 py-3 bg-[#3B82F6] text-white font-semibold rounded-lg text-sm hover:bg-[#3B82F6]/90 transition-colors shadow-lg shadow-[#3B82F6]/10"
+            >
+              Request Demo
+            </a>
+            <a 
+              href="https://github.com/kirtagya" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center justify-center px-6 py-3 border border-white/10 text-white font-semibold rounded-lg text-sm hover:bg-white/5 transition-colors"
+            >
+              <GithubIcon className="w-4 h-4 mr-2 text-[#EDEDED]/60" />
+              View GitHub Repo
+            </a>
+          </div>
+        </section>
+
+      </main>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/5 py-8 bg-[#050505]">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#EDEDED]/40 font-mono gap-4">
+          <div className="flex items-center gap-2">
+            <span>&copy; {new Date().getFullYear()} KT RAO. All rights reserved.</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+              Production-Grade Build
+            </span>
+            <a href="#" className="hover:text-white transition-colors">Portfolio</a>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  )
+
+  // RS Savoury Case Study Page View
+  const renderRSSavoury = () => (
+    <div className="min-h-screen bg-[#050505] selection:bg-[#3B82F6]/30 selection:text-white flex flex-col font-sans relative overflow-hidden">
+      
+      {/* Decorative Glow Elements */}
+      <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#3B82F6]/4 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-[450px] h-[450px] bg-[#3B82F6]/2 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Navigation Header */}
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-[#050505]/80 border-b border-white/5 transition-all">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="#" className="flex items-baseline gap-2 group">
+            <span className="text-2xl font-extrabold tracking-tight text-white group-hover:text-[#3B82F6] transition-colors">KT RAO</span>
+            <span className="text-xs italic text-[#EDEDED]/50 font-light tracking-wide">Kirtagya</span>
+          </a>
+
+          <a 
+            href="#" 
+            className="flex items-center gap-2 text-xs font-semibold text-[#EDEDED]/60 hover:text-white transition-colors px-3.5 py-2 rounded-lg border border-white/10 hover:border-white/20 bg-white/3"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Portfolio
+          </a>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="flex-grow max-w-6xl mx-auto px-6 py-12 md:py-20 space-y-20 md:space-y-28 relative z-10 w-full">
+        
+        {/* HERO SECTION */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-6 space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 text-[#3B82F6] text-xs font-mono font-medium">
+              <ShoppingBag className="w-3.5 h-3.5" />
+              E-Commerce & Logistics Case Study
+            </div>
+            
+            <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+              RS Savoury: Digitizing Artisanal Heritage.
+            </h1>
+            
+            <p className="text-lg text-[#EDEDED]/70 font-light leading-relaxed">
+              A full-stack e-commerce and logistics ecosystem built to scale traditional manufacturing.
+            </p>
+
+            <div className="flex flex-wrap gap-4 pt-2">
+              <button 
+                onClick={() => openWorkflow('rssavoury')}
+                className="inline-flex items-center justify-center px-5 py-3 rounded-lg text-sm font-semibold bg-[#3B82F6] text-white hover:bg-[#3B82F6]/90 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] transition-all duration-300"
+              >
+                <Workflow className="w-4 h-4 mr-2" />
+                View the Workflow
+              </button>
+              <a 
+                href="https://github.com/kirtagya" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center justify-center px-5 py-3 rounded-lg text-sm font-semibold border border-white/10 hover:border-white/20 text-[#EDEDED] hover:bg-white/3 transition-all"
+              >
+                <GithubIcon className="w-4 h-4 mr-2" />
+                View GitHub Repo
+              </a>
+            </div>
+          </div>
+
+          {/* Hero Image Mockup (Screenshot_20260622_210309.png) */}
+          <div className="lg:col-span-6 flex justify-center">
+            <div className="w-full max-w-lg rounded-xl overflow-hidden border border-white/10 bg-[#0b0b0b] shadow-2xl transition-all duration-300 hover:border-[#3B82F6]/30 group">
+              <div className="flex items-center gap-1.5 px-4 py-3 bg-[#0c0c0c] border-b border-white/5">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+                <span className="text-[10px] font-mono text-[#EDEDED]/30 ml-4">Consumer Storefront (Jaipur Gourmet)</span>
+              </div>
+              <div className="p-1.5 bg-[#050505]">
+                <img 
+                  src="/assets/Screenshot_20260622_210309.png" 
+                  alt="RS Savoury Consumer Storefront Hero" 
+                  className="w-full h-auto rounded-lg select-none filter brightness-95 group-hover:brightness-100 transition-all duration-300"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* THE "TWO-SIDED" PLATFORM - HIGH-CONTRAST BEFORE/AFTER */}
+        <section className="space-y-12">
+          <div className="space-y-2 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-mono text-[#3B82F6] font-bold">
+              <span>Dual-Engine Architecture</span>
+            </div>
+            <h2 className="text-3xl font-extrabold tracking-tight text-white">The Two-Sided Platform</h2>
+            <p className="text-sm text-[#EDEDED]/50 max-w-2xl leading-relaxed">
+              Scaling artisanal picklemaking requires balancing an elegant, high-end consumer-facing storefront with a data-dense kitchen operations dashboard.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            {/* Column 1: Storefront (Customer-facing) */}
+            <div className="space-y-8 p-6 rounded-lg border border-white/5 bg-[#0b0b0b] hover:border-[#3B82F6]/20 transition-all duration-300">
+              <div className="space-y-4">
+                <div className="flex items-center gap-2">
+                  <div className="p-2 rounded bg-[#3B82F6]/10 text-[#3B82F6]">
+                    <ShoppingBag className="w-4 h-4" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white">The Storefront (Customer UI)</h3>
+                </div>
+                <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light">
+                  A gorgeous digital store designed to convert premium culinary buyers. Features **"Gifting Mode"** box builders, **"Achar Club"** subscriptions, and the interactive **"Provenance Map"** tracing Jaipur garlic and Jodhpur mangoes. 
+                </p>
+                <p className="text-xs text-[#EDEDED]/40 italic leading-relaxed">
+                  "Aunty's Diary" (the recipes blog) and the "Provenance Map" act as critical brand building hooks to connect urban consumers with local Rajasthani farms.
+                </p>
+              </div>
+
+              {/* Stacked Storefront Screenshots */}
+              <div className="space-y-4">
+                {/* Product Layout Screenshot_20260622_210407.png */}
+                <div className="rounded-lg overflow-hidden border border-white/5 bg-[#050505] p-1 shadow-lg">
+                  <div className="text-[9px] font-mono text-[#EDEDED]/30 px-2 py-1 flex items-center justify-between border-b border-white/5 mb-1 bg-[#090909]">
+                    <span>Product Showcase View</span>
+                    <span>Keri Ka Khatta</span>
+                  </div>
+                  <img 
+                    src="/assets/Screenshot_20260622_210407.png" 
+                    alt="RS Savoury product detail view showcasing premium pickle jar" 
+                    className="w-full h-auto rounded select-none filter brightness-90 hover:brightness-100 transition-all duration-300"
+                  />
+                </div>
+
+                {/* Provenance Map Screenshot_20260622_210441.png */}
+                <div className="rounded-lg overflow-hidden border border-white/5 bg-[#050505] p-1 shadow-lg">
+                  <div className="text-[9px] font-mono text-[#EDEDED]/30 px-2 py-1 flex items-center justify-between border-b border-white/5 mb-1 bg-[#090909]">
+                    <span>Sourced From the Heart of Rajasthan</span>
+                    <span>Provenance Mapping</span>
+                  </div>
+                  <img 
+                    src="/assets/Screenshot_20260622_210441.png" 
+                    alt="RS Savoury ingredient provenance map showcasing local farm sourcing" 
+                    className="w-full h-auto rounded select-none filter brightness-90 hover:brightness-100 transition-all duration-300"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Column 2: Command Center (Admin-facing) */}
+            <div className="space-y-8 p-6 rounded-lg border border-white/5 bg-[#0b0b0b] hover:border-[#3B82F6]/20 transition-all duration-300 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center gap-2">
+                  <div className="p-2 rounded bg-[#3B82F6]/10 text-[#3B82F6]">
+                    <TrendingUp className="w-4 h-4" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white">The Command Center (Admin Backend)</h3>
+                </div>
+                <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light">
+                  A high-efficiency logistics dashboard for internal stakeholders. Coordinates order dispatch, kitchen output targets, and real-time transit status.
+                </p>
+                <ul className="space-y-3.5 text-xs text-[#EDEDED]/80">
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#3B82F6] shrink-0" />
+                    <span><strong>Automated Production Planning Alerts:</strong> Flags stock shortages relative to pending delivery orders.</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#3B82F6] shrink-0" />
+                    <span><strong>Real-time Order Tracking:</strong> Connects dispatch pipelines to multi-partner route optimization networks.</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#3B82F6] shrink-0" />
+                    <span><strong>Revenue Health Analytics:</strong> Tracks Cash on Delivery (COD) collection and pending transit values.</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Admin Dashboard Screenshot_20260622_210525.png */}
+              <div className="rounded-lg overflow-hidden border border-white/5 bg-[#050505] p-1 shadow-lg mt-4 lg:mt-0">
+                <div className="text-[9px] font-mono text-[#EDEDED]/30 px-2 py-1 flex items-center justify-between border-b border-white/5 mb-1 bg-[#090909]">
+                  <span>Admin Dashboard</span>
+                  <span>Operational Control</span>
+                </div>
+                <img 
+                  src="/assets/Screenshot_20260622_210525.png" 
+                  alt="RS Savoury Admin Dashboard for inventory and revenue tracking" 
+                  className="w-full h-auto rounded select-none filter brightness-90 hover:brightness-100 transition-all duration-300"
+                />
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* THE "WHY" (BUSINESS VALUE) */}
+        <section className="linear-card-gradient linear-border rounded-lg p-8 md:p-12 space-y-8 relative overflow-hidden">
+          <div className="absolute inset-0 bg-radial at-center from-[#3B82F6]/3 to-transparent opacity-40 pointer-events-none" />
+          
+          <div className="max-w-3xl space-y-4">
+            <h2 className="text-3xl font-extrabold tracking-tight text-white">Traditional retail meets modern logistics.</h2>
+            <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light">
+              RS Savoury demonstrates how legacy manufacturing can digitize successfully to control margins, increase customer retention, and orchestrate logistics efficiently.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left relative z-10 pt-4">
+            {[
+              { 
+                title: "Dynamic Kitchen Planning", 
+                desc: "Automated production planning triggers recipes and ingredient allocations based on active stock forecasts." 
+              },
+              { 
+                title: "Verified Sourcing Map", 
+                desc: "End-to-end transparency traces salt, oil, mangoes, and chilies directly from regional farms to the consumer's jar." 
+              },
+              { 
+                title: "Artisanal Subscription Model", 
+                desc: "Custom monthly 'Achar Club' checkout flows capture stable recurring revenue and improve lifetime value." 
+              }
+            ].map((col, idx) => (
+              <div key={idx} className="p-5 rounded bg-[#050505] border border-white/5 space-y-2">
+                <div className="text-[#3B82F6] font-mono text-[10px] font-bold">VALUE / 0{idx+1}</div>
+                <h4 className="text-sm font-semibold text-white">{col.title}</h4>
+                <p className="text-xs text-[#EDEDED]/50 leading-relaxed font-light">{col.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* TECH STACK & TOOLS */}
+        <section className="text-center space-y-6 border-t border-white/5 pt-16">
+          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-mono text-[#EDEDED]/40">
+            <span>Engineering Stack</span>
+          </div>
+          <h2 className="text-3xl font-extrabold tracking-tight text-white max-w-2xl mx-auto">
+            Built with Next.js, Prisma, PostgreSQL, and Google Maps API.
+          </h2>
+          <p className="text-sm text-[#EDEDED]/50 max-w-xl mx-auto leading-relaxed">
+            Incorporates a custom JWT-based authentication protocol securing the delivery rider dispatcher portals. Includes multi-platform mobile client frameworks (Native iOS & Android with SwiftUI & Jetpack Compose).
+          </p>
+          <div className="pt-2">
+            <button 
+              onClick={() => openWorkflow('rssavoury')}
+              className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-white/10 hover:border-[#3B82F6] hover:bg-[#3B82F6]/5 text-white transition-all font-semibold"
+            >
+              <Workflow className="w-4 h-4 mr-2" />
+              View Delivery & Sourcing Flow Diagram
+            </button>
+          </div>
+        </section>
+
+        {/* Bottom CTA */}
+        <section className="linear-card-gradient linear-border rounded-lg p-8 md:p-12 text-center space-y-6 relative overflow-hidden">
+          <div className="absolute inset-0 bg-radial at-center from-[#3B82F6]/5 to-transparent opacity-50 pointer-events-none" />
+          
+          <div className="max-w-xl mx-auto space-y-3 relative z-10">
+            <h3 className="text-2xl font-bold text-white">Need a custom logistics engine for your business?</h3>
+            <p className="text-sm text-[#EDEDED]/60 font-light">
+              Let's build a secure, automated backend to align your inventory and customer facing storefront.
+            </p>
+          </div>
+
+          <div className="flex justify-center relative z-10">
+            <a 
+              href="mailto:kirtagya.rao@gmail.com?subject=Custom%20Logistics%20Engine%20Inquiry" 
+              className="inline-flex items-center justify-center px-8 py-3.5 bg-white text-black font-semibold rounded-lg text-sm hover:bg-[#EDEDED] transition-colors"
+            >
+              <Mail className="w-4 h-4 mr-2" />
+              Let's talk
+            </a>
+          </div>
+        </section>
+
+      </main>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/5 py-8 bg-[#050505]">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#EDEDED]/40 font-mono gap-4">
+          <div className="flex items-center gap-2">
+            <span>&copy; {new Date().getFullYear()} KT RAO. All rights reserved.</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+              Production-Grade Build
+            </span>
+            <a href="#" className="hover:text-white transition-colors">Portfolio</a>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  )
+
+  return (
+    <>
+      {view === 'proofstudio' ? renderProofStudio() : view === 'rssavoury' ? renderRSSavoury() : renderHome()}
+
+      {/* WORKFLOW MODAL DIALOG */}
+      {isWorkflowOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#050505]/95 backdrop-blur-md p-4 transition-all duration-300">
+          <div className="bg-[#0b0b0b] border border-white/10 rounded-xl max-w-4xl w-full p-6 space-y-6 relative shadow-2xl">
+            
+            {/* Close Button */}
+            <button 
+              onClick={() => setIsWorkflowOpen(false)}
+              className="absolute top-4 right-4 text-[#EDEDED]/50 hover:text-white transition-colors p-1"
+              aria-label="Close Workflow Modal"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Modal Title */}
+            <div className="space-y-1 pr-6">
+              <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                <Workflow className="w-5 h-5 text-[#3B82F6]" />
+                {activeWorkflowProj === 'proofstudio' ? 'ProofStudio Pipeline Node Workflow' : 'RS Savoury Logistics & Sourcing Workflow'}
+              </h3>
+              <p className="text-xs text-[#EDEDED]/50 font-light">
+                {activeWorkflowProj === 'proofstudio' 
+                  ? 'This diagram maps the automation workflow from raw input client testimonials to structured multi-channel marketing campaigns.'
+                  : 'This diagram maps the provenance supply chain and rider route coordination dispatching artisanal jars directly to customers.'
+                }
+              </p>
+            </div>
+
+            {/* Node Diagram Layout */}
+            {activeWorkflowProj === 'proofstudio' ? (
+              <div className="py-8 grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4 items-center justify-center relative font-mono text-xs text-center select-none">
+                {/* Node 1: Input */}
+                <div className="p-4 rounded-lg bg-[#050505] border border-white/5 space-y-2">
+                  <span className="text-[10px] text-[#EDEDED]/40 uppercase tracking-wide">Step 01 / Input</span>
+                  <div className="font-semibold text-white">Client Win</div>
+                  <div className="text-[10px] text-[#EDEDED]/50 bg-white/5 p-1 rounded font-sans truncate">"In 8 weeks I got..."</div>
+                </div>
+
+                {/* Connecting line 1 */}
+                <div className="hidden md:flex items-center justify-center">
+                  <ChevronRight className="w-6 h-6 text-[#3B82F6]" />
+                </div>
+
+                {/* Node 2: Core Processing */}
+                <div className="p-4 rounded-lg bg-[#3B82F6]/5 border border-[#3B82F6]/30 space-y-2 relative glow-effect">
+                  <span className="text-[10px] text-[#3B82F6] uppercase tracking-wide">Step 02 / Engine</span>
+                  <div className="font-semibold text-white flex items-center justify-center gap-1.5">
+                    <Cpu className="w-4 h-4 text-[#3B82F6]" />
+                    Gemini 2.5 AI
+                  </div>
+                  <div className="text-[9px] text-[#EDEDED]/60 bg-[#3B82F6]/10 py-0.5 px-1.5 rounded inline-block">Flash Engine</div>
+                </div>
+
+                {/* Connecting line 2 */}
+                <div className="hidden md:flex items-center justify-center">
+                  <ChevronRight className="w-6 h-6 text-[#3B82F6]" />
+                </div>
+
+                {/* Node 3: Multi-Outputs */}
+                <div className="space-y-3">
+                  <div className="p-2.5 rounded bg-[#050505] border border-white/5 flex items-center justify-between text-left gap-3">
+                    <span className="text-white font-sans text-[11px]">LinkedIn Posts</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  </div>
+                  <div className="p-2.5 rounded bg-[#050505] border border-white/5 flex items-center justify-between text-left gap-3">
+                    <span className="text-white font-sans text-[11px]">Case Study Pages</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  </div>
+                  <div className="p-2.5 rounded bg-[#050505] border border-white/5 flex items-center justify-between text-left gap-3">
+                    <span className="text-white font-sans text-[11px]">Video Scripts</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="py-8 grid grid-cols-1 md:grid-cols-7 gap-6 md:gap-2 items-center justify-center relative font-mono text-xs text-center select-none">
+                {/* Node 1: Sourcing */}
+                <div className="p-3 rounded-lg bg-[#050505] border border-white/5 space-y-2">
+                  <span className="text-[9px] text-[#EDEDED]/40 uppercase tracking-wide">01 / Source</span>
+                  <div className="font-semibold text-white flex items-center justify-center gap-1">
+                    <MapPin className="w-3.5 h-3.5 text-[#3B82F6]" />
+                    Farms
+                  </div>
+                  <div className="text-[9px] text-[#EDEDED]/50 bg-white/5 p-1 rounded font-sans truncate">Jaipur / Jodhpur</div>
+                </div>
+
+                <div className="hidden md:flex items-center justify-center">
+                  <ChevronRight className="w-5 h-5 text-[#3B82F6]" />
+                </div>
+
+                {/* Node 2: Kitchen */}
+                <div className="p-3 rounded-lg bg-[#050505] border border-white/5 space-y-2">
+                  <span className="text-[9px] text-[#EDEDED]/40 uppercase tracking-wide">02 / Kitchen</span>
+                  <div className="font-semibold text-white">Manufacture</div>
+                  <div className="text-[9px] text-[#EDEDED]/50 bg-white/5 p-1 rounded font-sans truncate">Sun-Drying (21d)</div>
+                </div>
+
+                <div className="hidden md:flex items-center justify-center">
+                  <ChevronRight className="w-5 h-5 text-[#3B82F6]" />
+                </div>
+
+                {/* Node 3: Serverless Backend API */}
+                <div className="p-3 rounded-lg bg-[#3B82F6]/5 border border-[#3B82F6]/30 space-y-2 relative glow-effect">
+                  <span className="text-[9px] text-[#3B82F6] uppercase tracking-wide">03 / Platform</span>
+                  <div className="font-semibold text-white flex items-center justify-center gap-1">
+                    <Cpu className="w-3.5 h-3.5 text-[#3B82F6]" />
+                    Logistics API
+                  </div>
+                  <div className="text-[8px] text-[#EDEDED]/60 bg-[#3B82F6]/10 px-1.5 py-0.5 rounded">Prisma / Postgres</div>
+                </div>
+
+                <div className="hidden md:flex items-center justify-center">
+                  <ChevronRight className="w-5 h-5 text-[#3B82F6]" />
+                </div>
+
+                {/* Node 4: Rider Dispatch */}
+                <div className="p-3 rounded-lg bg-[#050505] border border-white/5 space-y-2">
+                  <span className="text-[9px] text-[#EDEDED]/40 uppercase tracking-wide">04 / Delivery</span>
+                  <div className="font-semibold text-white flex items-center justify-center gap-1">
+                    <Truck className="w-3.5 h-3.5 text-emerald-400" />
+                    Rider Portal
+                  </div>
+                  <div className="text-[9px] text-[#EDEDED]/50 bg-white/5 p-1 rounded font-sans truncate">JWT Auth Route</div>
+                </div>
+              </div>
+            )}
+
+            {/* Modal Bottom note */}
+            <div className="border-t border-white/5 pt-4 flex items-center justify-between text-[11px] text-[#EDEDED]/40">
+              <span>State: Pipeline Active</span>
+              <span className="flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                Ready
+              </span>
+            </div>
+
+          </div>
+        </div>
+      )}
+    </>
+  )
+}
+
+export default App

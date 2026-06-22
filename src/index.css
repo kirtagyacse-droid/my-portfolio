@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #050505;
+    color: #EDEDED;
+  }
+
+  body {
+    background-color: #050505;
+    color: #EDEDED;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom Selection styling */
+  ::selection {
+    background-color: rgba(59, 130, 246, 0.3);
+    color: #EDEDED;
+  }
+
+  /* Custom Minimalist Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #050505;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #222222;
+    border-radius: 4px;
+    border: 2px solid #050505;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3B82F6;
+  }
+}
+
+/* Linear.app Glassmorphism & border classes */
+.linear-border {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.linear-gradient-bg {
+  background: radial-gradient(120% 120% at 50% 0%, rgba(59, 130, 246, 0.05) 0%, rgba(0, 0, 0, 0) 100%), #050505;
+}
+
+.linear-card-gradient {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%), #0b0b0b;
+}
+
+.glow-effect {
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.08);
+}
