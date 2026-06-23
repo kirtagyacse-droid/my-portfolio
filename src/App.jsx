@@ -18,7 +18,8 @@ import {
   ShoppingBag,
   TrendingUp,
   MapPin,
-  Truck
+  Truck,
+  Phone
 } from 'lucide-react'
 
 // Custom SVGs for brand icons
@@ -89,16 +90,16 @@ function App() {
 
           <div className="flex items-center space-x-4">
             <a 
-              href="https://github.com/kirtagya" 
+              href="https://github.com/kirtagyacse-droid" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-[#EDEDED]/60 hover:text-white transition-colors p-1"
-              aria-label="GitHub Profile"
+              aria-label="GitHub Repository"
             >
               <GithubIcon className="w-5 h-5" />
             </a>
             <a 
-              href="https://linkedin.com/in/kirtagya" 
+              href="https://www.linkedin.com/in/kirtagyakt" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-[#EDEDED]/60 hover:text-white transition-colors p-1"
@@ -417,22 +418,29 @@ function App() {
               kirtagya.rao@gmail.com
             </a>
             <a 
-              href="https://github.com/kirtagya" 
+              href="https://github.com/kirtagyacse-droid" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="inline-flex items-center justify-center px-6 py-3 border border-white/10 text-white font-semibold rounded-lg text-sm hover:border-[#3B82F6] hover:bg-[#3B82F6]/5 transition-colors"
             >
               <GithubIcon className="w-4 h-4 mr-2 text-[#EDEDED]/60" />
-              GitHub
+              GitHub Repo
             </a>
             <a 
-              href="https://linkedin.com/in/kirtagya" 
+              href="https://www.linkedin.com/in/kirtagyakt" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="inline-flex items-center justify-center px-6 py-3 border border-white/10 text-white font-semibold rounded-lg text-sm hover:border-[#3B82F6] hover:bg-[#3B82F6]/5 transition-colors"
             >
               <LinkedinIcon className="w-4 h-4 mr-2 text-[#EDEDED]/60" />
               LinkedIn
+            </a>
+            <a 
+              href="tel:+919216656099" 
+              className="inline-flex items-center justify-center px-6 py-3 border border-white/10 text-white font-semibold rounded-lg text-sm hover:border-[#3B82F6] hover:bg-[#3B82F6]/5 transition-colors"
+            >
+              <Phone className="w-4 h-4 mr-2 text-[#EDEDED]/60" />
+              +91 92166 56099
             </a>
           </div>
         </section>
@@ -512,7 +520,7 @@ function App() {
                 View the Workflow
               </button>
               <a 
-                href="https://github.com/kirtagya" 
+                href="https://github.com/kirtagyacse-droid/proofstudio" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inline-flex items-center justify-center px-5 py-3 rounded-lg text-sm font-semibold border border-white/10 hover:border-white/20 text-[#EDEDED] hover:bg-white/3 transition-all"
@@ -699,7 +707,7 @@ function App() {
               Request Demo
             </a>
             <a 
-              href="https://github.com/kirtagya" 
+              href="https://github.com/kirtagyacse-droid/proofstudio" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="inline-flex items-center justify-center px-6 py-3 border border-white/10 text-white font-semibold rounded-lg text-sm hover:bg-white/5 transition-colors"
@@ -785,7 +793,7 @@ function App() {
                 View the Workflow
               </button>
               <a 
-                href="https://github.com/kirtagya" 
+                href="https://github.com/kirtagyacse-droid/the-achar-project" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inline-flex items-center justify-center px-5 py-3 rounded-lg text-sm font-semibold border border-white/10 hover:border-white/20 text-[#EDEDED] hover:bg-white/3 transition-all"
@@ -1083,15 +1091,6 @@ function App() {
                 <Mail className="w-4 h-4 mr-2" />
                 Request Documentation
               </a>
-              <a
-                href="https://github.com/kirtagya"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-5 py-3 rounded-lg text-sm font-semibold border border-white/10 hover:border-white/20 text-[#EDEDED] hover:bg-white/3 transition-all"
-              >
-                <GithubIcon className="w-4 h-4 mr-2" />
-                View GitHub
-              </a>
             </div>
           </div>
 
@@ -1342,15 +1341,6 @@ function App() {
             >
               <Mail className="w-4 h-4 mr-2" />
               Partner with Us
-            </a>
-            <a
-              href="https://github.com/kirtagya"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-3.5 border border-white/10 text-white font-semibold rounded-lg text-sm hover:border-[#3B82F6] hover:bg-[#3B82F6]/5 transition-colors"
-            >
-              <GithubIcon className="w-4 h-4 mr-2 text-[#EDEDED]/60" />
-              GitHub Repo
             </a>
           </div>
         </section>
