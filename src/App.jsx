@@ -528,6 +528,15 @@ function App() {
                 <GithubIcon className="w-4 h-4 mr-2" />
                 View GitHub Repo
               </a>
+              <a 
+                href="https://proofstudio-5h2i.vercel.app/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center justify-center px-5 py-3 rounded-lg text-sm font-semibold border border-[#3B82F6]/30 hover:border-[#3B82F6] text-white hover:bg-[#3B82F6]/5 transition-all"
+              >
+                <ExternalLink className="w-4 h-4 mr-2 text-[#3B82F6]" />
+                Live Demo
+              </a>
             </div>
           </div>
 
@@ -702,7 +711,7 @@ function App() {
           <div className="flex flex-wrap justify-center items-center gap-4 relative z-10">
             <a 
               href="mailto:kirtagya.rao@gmail.com?subject=ProofStudio%20Demo%20Request" 
-              className="inline-flex items-center justify-center px-6 py-3 bg-[#3B82F6] text-white font-semibold rounded-lg text-sm hover:bg-[#3B82F6]/90 transition-colors shadow-lg shadow-[#3B82F6]/10"
+              className="inline-flex items-center justify-center px-6 py-3 border border-white/10 text-white font-semibold rounded-lg text-sm hover:bg-white/5 transition-colors"
             >
               Request Demo
             </a>
@@ -714,6 +723,15 @@ function App() {
             >
               <GithubIcon className="w-4 h-4 mr-2 text-[#EDEDED]/60" />
               View GitHub Repo
+            </a>
+            <a 
+              href="https://proofstudio-5h2i.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center justify-center px-6 py-3 bg-[#3B82F6] text-white font-semibold rounded-lg text-sm hover:bg-[#3B82F6]/90 transition-colors shadow-lg shadow-[#3B82F6]/10"
+            >
+              <ExternalLink className="w-4 h-4 mr-2" />
+              Live Demo
             </a>
           </div>
         </section>
@@ -800,6 +818,15 @@ function App() {
               >
                 <GithubIcon className="w-4 h-4 mr-2" />
                 View GitHub Repo
+              </a>
+              <a 
+                href="https://rssavoury.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center justify-center px-5 py-3 rounded-lg text-sm font-semibold border border-[#3B82F6]/30 hover:border-[#3B82F6] text-white hover:bg-[#3B82F6]/5 transition-all"
+              >
+                <ExternalLink className="w-4 h-4 mr-2 text-[#3B82F6]" />
+                Live Demo
               </a>
             </div>
           </div>
@@ -998,13 +1025,22 @@ function App() {
             </p>
           </div>
 
-          <div className="flex justify-center relative z-10">
+          <div className="flex flex-wrap justify-center items-center gap-4 relative z-10">
             <a 
               href="mailto:kirtagya.rao@gmail.com?subject=Custom%20Logistics%20Engine%20Inquiry" 
-              className="inline-flex items-center justify-center px-8 py-3.5 bg-white text-black font-semibold rounded-lg text-sm hover:bg-[#EDEDED] transition-colors"
+              className="inline-flex items-center justify-center px-8 py-3.5 border border-white/10 text-white font-semibold rounded-lg text-sm hover:bg-white/5 transition-colors"
             >
               <Mail className="w-4 h-4 mr-2" />
               Let's talk
+            </a>
+            <a 
+              href="https://rssavoury.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center justify-center px-8 py-3.5 bg-white text-black font-semibold rounded-lg text-sm hover:bg-[#EDEDED] transition-colors shadow-lg"
+            >
+              <ExternalLink className="w-4 h-4 mr-2" />
+              Live Demo
             </a>
           </div>
         </section>
