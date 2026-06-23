@@ -208,7 +208,7 @@ function App() {
               href="#proofstudio"
               className="group linear-card-gradient linear-border rounded-lg p-6 flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300 relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-[#3B82F6]/2 rounded-bl-full pointer-events-none" />
+              <div className="absolute top-0 right-0 w-24 h-24 rounded-bl-full pointer-events-none" style={{ backgroundColor: 'rgba(59, 130, 246, 0.02)' }} />
               
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
@@ -221,11 +221,11 @@ function App() {
                 </div>
 
                 <div className="space-y-2">
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 pr-8">
                     <h4 className="text-xl font-bold tracking-tight text-white group-hover:text-[#3B82F6] transition-colors">
                       ProofStudio
                     </h4>
-                    <span className="px-2 py-0.5 rounded-full bg-[#3B82F6]/10 text-[#3B82F6] text-[9px] font-mono border border-[#3B82F6]/20">SaaS Case Study</span>
+                    <span className="px-2 py-0.5 rounded-full bg-[#3B82F6]/10 text-[#3B82F6] text-[9px] font-mono border border-[#3B82F6]/20 whitespace-nowrap">SaaS Case Study</span>
                   </div>
                   <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light font-sans">
                     SaaS engine that transforms raw client testimonials into automated LinkedIn posts, structured case studies, and landing page copy.
@@ -275,7 +275,7 @@ function App() {
               href="#rssavoury"
               className="group linear-card-gradient linear-border rounded-lg p-6 flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300 lg:col-span-2 relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-36 h-36 bg-[#3B82F6]/3 rounded-bl-full pointer-events-none" />
+              <div className="absolute top-0 right-0 w-36 h-36 rounded-bl-full pointer-events-none" style={{ backgroundColor: 'rgba(59, 130, 246, 0.03)' }} />
 
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
@@ -288,11 +288,11 @@ function App() {
                 </div>
 
                 <div className="space-y-2">
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 pr-8">
                     <h4 className="text-xl font-bold tracking-tight text-white group-hover:text-[#3B82F6] transition-colors">
                       RS Savoury (Achar Project)
                     </h4>
-                    <span className="px-2 py-0.5 rounded-full bg-[#3B82F6]/10 text-[#3B82F6] text-[9px] font-mono border border-[#3B82F6]/20">E-Commerce & Logistics</span>
+                    <span className="px-2 py-0.5 rounded-full bg-[#3B82F6]/10 text-[#3B82F6] text-[9px] font-mono border border-[#3B82F6]/20 whitespace-nowrap">E-Commerce & Logistics</span>
                   </div>
                   <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light font-sans max-w-2xl">
                     Full-stack e-commerce and logistics ecosystem built to scale traditional picklemaking manufacturing, bridging Jaipur consumer storefronts with dynamic operational admin hubs.
@@ -330,7 +330,7 @@ function App() {
             <a
               href="#ucrs"
               className="group linear-card-gradient linear-border rounded-lg p-6 flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300 lg:col-span-3 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-[#3B82F6]/4 rounded-bl-full pointer-events-none" />
+              <div className="absolute top-0 right-0 w-48 h-48 rounded-bl-full pointer-events-none" style={{ backgroundColor: 'rgba(59, 130, 246, 0.04)' }} />
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
                 <div className="lg:col-span-7 space-y-6">
@@ -340,11 +340,11 @@ function App() {
                     </div>
                     
                     <div className="space-y-2">
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 pr-8">
                         <h4 className="text-xl font-bold tracking-tight text-white group-hover:text-[#3B82F6] transition-colors">
                           UCRS - Dairy Monitoring System
                         </h4>
-                        <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[9px] font-mono border border-emerald-500/20">Computer Vision</span>
+                        <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[9px] font-mono border border-emerald-500/20 whitespace-nowrap">Computer Vision</span>
                       </div>
                       <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light font-sans">
                         Enterprise computer vision and IoT platform for multi-camera cattle identification and milk quality traceability.
