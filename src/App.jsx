@@ -51,6 +51,15 @@ function App() {
       } else if (window.location.hash === '#ucrs') {
         setView('ucrs')
         window.scrollTo(0, 0)
+      } else if (window.location.hash === '#defect-detection') {
+        setView('defect-detection')
+        window.scrollTo(0, 0)
+      } else if (window.location.hash === '#shelf-monitor') {
+        setView('shelf-monitor')
+        window.scrollTo(0, 0)
+      } else if (window.location.hash === '#sorting-system') {
+        setView('sorting-system')
+        window.scrollTo(0, 0)
       } else {
         setView('home')
       }
@@ -390,6 +399,185 @@ function App() {
                       <span>Node_3: Traceability_Sync</span>
                       <span className="text-[#EDEDED]/30 text-[10px]">PENDING</span>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            {/* Project 4: Defect Detection System (lg:col-span-2) */}
+            <a
+              href="#defect-detection"
+              className="group linear-card-gradient linear-border rounded-lg p-6 flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300 lg:col-span-2 relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-36 h-36 rounded-bl-full pointer-events-none" style={{ backgroundColor: 'rgba(59, 130, 246, 0.03)' }} />
+
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div className="p-2.5 rounded-md bg-white/3 text-[#3B82F6] border border-white/5">
+                    <Cpu className="w-5 h-5" />
+                  </div>
+                  <span className="text-[#EDEDED]/40 group-hover:text-white transition-colors">
+                    <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 pr-8">
+                    <h4 className="text-xl font-bold tracking-tight text-white group-hover:text-[#3B82F6] transition-colors">
+                      Defect Detection System
+                    </h4>
+                    <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[9px] font-mono border border-emerald-500/20 whitespace-nowrap">Computer Vision</span>
+                  </div>
+                  <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light font-sans max-w-2xl">
+                    Automated surface inspection pipeline using YOLOv8 for real-time scratch, crack, and dent detection on industrial metal sheets with a Flask REST API.
+                  </p>
+                </div>
+              </div>
+
+              {/* Calibration Metrics Visual */}
+              <div className="my-6 grid grid-cols-3 gap-3 select-none">
+                {[
+                  { title: 'Accuracy', value: '98.6%', status: 'Optimal', color: 'text-emerald-400' },
+                  { title: 'Latency', value: '34ms', status: 'Real-time', color: 'text-[#3B82F6]' },
+                  { title: 'Defect Classes', value: '4', status: 'Active', color: 'text-amber-400' }
+                ].map((stat, i) => (
+                  <div key={i} className="p-3 rounded bg-[#050505] border border-white/5 space-y-1">
+                    <span className="text-[10px] uppercase tracking-wider font-mono text-[#EDEDED]/40">{stat.title}</span>
+                    <div className="flex items-baseline justify-between">
+                      <span className="text-sm font-semibold text-white">{stat.value}</span>
+                      <span className={`text-[9px] font-mono font-medium ${stat.color}`}>{stat.status}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+                {['YOLOv8', 'Python', 'Flask', 'Docker', 'OpenCV'].map((tag) => (
+                  <span key={tag} className="px-2 py-0.5 text-[10px] font-mono rounded bg-white/5 text-[#EDEDED]/70 border border-white/5">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </a>
+
+            {/* Project 5: Retail Shelf Monitor (lg:col-span-1) */}
+            <a
+              href="#shelf-monitor"
+              className="group linear-card-gradient linear-border rounded-lg p-6 flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300 relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-24 h-24 rounded-bl-full pointer-events-none" style={{ backgroundColor: 'rgba(59, 130, 246, 0.02)' }} />
+
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div className="p-2.5 rounded-md bg-white/3 text-[#3B82F6] border border-white/5">
+                    <ShoppingBag className="w-5 h-5" />
+                  </div>
+                  <span className="text-[#EDEDED]/40 group-hover:text-white transition-colors">
+                    <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 pr-8">
+                    <h4 className="text-xl font-bold tracking-tight text-white group-hover:text-[#3B82F6] transition-colors">
+                      Retail Shelf Monitor
+                    </h4>
+                    <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[9px] font-mono border border-emerald-500/20 whitespace-nowrap">Computer Vision</span>
+                  </div>
+                  <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light font-sans">
+                    AI shelf analysis detecting stock levels across retail aisles with YOLOv8 and a Next.js upload dashboard.
+                  </p>
+                </div>
+              </div>
+
+              {/* Stock Status Grid */}
+              <div className="my-6 p-4 rounded bg-[#050505] border border-white/5 space-y-3 select-none font-mono text-[9px]">
+                <div className="flex items-center justify-between text-[#EDEDED]/40 border-b border-white/5 pb-1.5">
+                  <span className="flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    SHELF SCAN
+                  </span>
+                  <span>Aisle 4B</span>
+                </div>
+                <div className="grid grid-cols-5 gap-1">
+                  {['Full','Full','Low','Full','Empty','Full','Low','Full','Full','Full'].map((s, i) => (
+                    <div key={i} className={`p-1.5 rounded text-center text-[8px] font-semibold ${
+                      s === 'Full' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' :
+                      s === 'Low' ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' :
+                      'bg-rose-500/10 text-rose-400 border border-rose-500/20'
+                    }`}>{s}</div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+                {['YOLOv8', 'Next.js', 'Python', 'FastAPI'].map((tag) => (
+                  <span key={tag} className="px-2 py-0.5 text-[10px] font-mono rounded bg-white/5 text-[#EDEDED]/70 border border-white/5">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </a>
+
+            {/* Project 6: Package Sorting System (lg:col-span-3) */}
+            <a
+              href="#sorting-system"
+              className="group linear-card-gradient linear-border rounded-lg p-6 flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl hover:border-[#3B82F6]/30 transition-all duration-300 lg:col-span-3 relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-48 h-48 rounded-bl-full pointer-events-none" style={{ backgroundColor: 'rgba(59, 130, 246, 0.04)' }} />
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                <div className="lg:col-span-7 space-y-6">
+                  <div className="space-y-4">
+                    <div className="p-2.5 rounded-md bg-white/3 text-[#3B82F6] border border-white/5 w-fit">
+                      <Truck className="w-5 h-5" />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 pr-8">
+                        <h4 className="text-xl font-bold tracking-tight text-white group-hover:text-[#3B82F6] transition-colors">
+                          Package Sorting System
+                        </h4>
+                        <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[9px] font-mono border border-emerald-500/20 whitespace-nowrap">Computer Vision</span>
+                      </div>
+                      <p className="text-sm text-[#EDEDED]/60 leading-relaxed font-light font-sans">
+                        Deep association tracking pipeline using YOLOv8 + OSNet Re-ID for automated multi-class package identification and conveyor sorting.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+                    {['YOLOv8', 'OSNet', 'DeepSORT', 'Python', 'Flask'].map((tag) => (
+                      <span key={tag} className="px-2 py-0.5 text-[10px] font-mono rounded bg-white/5 text-[#EDEDED]/70 border border-white/5">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Live Sorting Log */}
+                <div className="lg:col-span-5 p-4 rounded-lg bg-[#050505] border border-white/5 space-y-4 font-mono text-xs select-none">
+                  <div className="flex items-center justify-between border-b border-white/5 pb-2 text-[10px] text-[#EDEDED]/40">
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                      SORT_ENGINE
+                    </span>
+                    <span className="text-emerald-400/70">99.4% match</span>
+                  </div>
+
+                  <div className="space-y-2">
+                    {[
+                      { id: 'PKG-0042', cls: 'Express', bin: 'Bin B', conf: '99.3%', color: 'text-[#3B82F6]' },
+                      { id: 'PKG-0041', cls: 'Ground', bin: 'Bin A', conf: '99.8%', color: 'text-emerald-400' },
+                      { id: 'PKG-0040', cls: 'Next Day', bin: 'Bin C', conf: '98.9%', color: 'text-amber-400' }
+                    ].map((pkg, i) => (
+                      <div key={i} className="flex items-center justify-between bg-white/3 p-2 rounded border border-white/5 text-[10px]">
+                        <span className="text-white font-semibold">{pkg.id}</span>
+                        <span className="text-[#EDEDED]/50">{pkg.cls}</span>
+                        <span className={pkg.color}>{pkg.bin}</span>
+                        <span className="text-emerald-400">{pkg.conf}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -1402,9 +1590,450 @@ function App() {
     </div>
   )
 
+  // ─── Defect Detection System Detail Page ──────────────────────────────
+  const renderDefectDetection = () => (
+    <div className="min-h-screen linear-gradient-bg selection:bg-[#3B82F6]/30 selection:text-white flex flex-col font-sans relative overflow-hidden">
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#3B82F6]/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-[#050505]/70 border-b border-white/5">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="#" className="inline-flex items-center gap-2 text-[#EDEDED]/60 hover:text-white transition-colors text-sm">
+            <ArrowLeft className="w-4 h-4" />
+            Back to Portfolio
+          </a>
+          <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono border border-emerald-500/20">Computer Vision</span>
+        </div>
+      </header>
+
+      <main className="max-w-6xl mx-auto px-6 py-16 space-y-20 flex-1">
+
+        {/* Hero */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-6 space-y-6">
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              Defect Detection System
+            </h1>
+            <p className="text-base text-[#EDEDED]/60 leading-relaxed font-light max-w-xl">
+              An automated surface inspection pipeline that uses YOLOv8 to detect scratches, cracks, dents, and corrosion on industrial metal sheets in real time, served via a containerized Flask REST API.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {['YOLOv8', 'Python', 'Flask', 'Docker', 'OpenCV', 'Kaggle GPU'].map((tag) => (
+                <span key={tag} className="px-3 py-1 text-xs font-mono rounded-full bg-white/5 text-[#EDEDED]/70 border border-white/5">{tag}</span>
+              ))}
+            </div>
+            <div className="flex flex-wrap items-center gap-4 pt-4">
+              <a href="mailto:kirtagya.rao@gmail.com?subject=Defect%20Detection%20System%20Inquiry" className="inline-flex items-center justify-center px-6 py-3 bg-white text-black font-semibold rounded-lg text-sm hover:bg-[#EDEDED] transition-colors">
+                <Mail className="w-4 h-4 mr-2" />
+                Discuss This Project
+              </a>
+            </div>
+          </div>
+          <div className="lg:col-span-6 flex justify-center">
+            <div className="w-full max-w-lg rounded-xl overflow-hidden border border-white/10 bg-[#0b0b0b] shadow-2xl transition-all duration-300 hover:border-[#3B82F6]/30">
+              <img src="/assets/defect_conveyor_inspection.png" alt="Defect Detection Conveyor" className="w-full h-auto" />
+            </div>
+          </div>
+        </section>
+
+        {/* Problem Statement */}
+        <section className="linear-card-gradient linear-border rounded-lg p-8 md:p-12 space-y-6">
+          <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+            <span className="p-2 rounded-md bg-rose-500/10 text-rose-400 border border-rose-500/20"><ShieldCheck className="w-5 h-5" /></span>
+            The Problem
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { title: 'Manual Inspection Bottleneck', desc: 'Human inspectors miss 12-18% of surface defects under fatigue, creating costly downstream recalls.' },
+              { title: 'Inconsistent Quality Gates', desc: 'Subjective pass/fail criteria across shifts led to 3x variance in defect classification accuracy.' },
+              { title: 'No Real-Time Feedback', desc: 'Defect reports took 24-48 hours to compile, preventing immediate corrective action on the production line.' }
+            ].map((item, i) => (
+              <div key={i} className="p-5 rounded-lg bg-[#050505] border border-white/5 space-y-2">
+                <h3 className="text-sm font-semibold text-white">{item.title}</h3>
+                <p className="text-xs text-[#EDEDED]/50 leading-relaxed font-light">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Engineering Solution */}
+        <section className="space-y-8">
+          <h2 className="text-2xl font-bold text-white">Engineering Solution</h2>
+          <div className="space-y-6">
+            {[
+              { step: '01', title: 'Data Acquisition & Augmentation', desc: 'Curated 12,000+ annotated images of metal surface defects (scratches, cracks, dents, corrosion) from Kaggle and proprietary datasets. Applied mosaic augmentation, random HSV shifts, and geometric transforms to 4x the training volume.' },
+              { step: '02', title: 'YOLOv8 Model Training', desc: 'Trained a YOLOv8m model on Kaggle T4 GPUs for 150 epochs with cosine learning rate annealing, achieving 98.6% mAP@0.5 across all 4 defect classes.' },
+              { step: '03', title: 'Flask REST API', desc: 'Wrapped the trained model in a Flask inference server exposing POST /detect endpoints. Returns bounding box coordinates, class labels, and confidence scores as structured JSON.' },
+              { step: '04', title: 'Containerization & Deployment', desc: 'Dockerized the entire stack (model weights + Flask server) for reproducible deployment. Supports both CPU and GPU inference with automatic device selection.' }
+            ].map((item, i) => (
+              <div key={i} className="flex gap-6 items-start">
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6] text-sm font-bold font-mono">{item.step}</div>
+                <div className="space-y-1">
+                  <h3 className="text-base font-semibold text-white">{item.title}</h3>
+                  <p className="text-sm text-[#EDEDED]/50 leading-relaxed font-light">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Results & ROI */}
+        <section className="linear-card-gradient linear-border rounded-lg p-8 md:p-12 space-y-8">
+          <h2 className="text-2xl font-bold text-white">Results & ROI</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { metric: '98.6%', label: 'Detection Accuracy (mAP@0.5)' },
+              { metric: '34ms', label: 'Inference Latency (GPU)' },
+              { metric: '4', label: 'Defect Classes Supported' },
+              { metric: '85%', label: 'Reduction in Manual Inspections' }
+            ].map((r, i) => (
+              <div key={i} className="p-5 rounded-lg bg-[#050505] border border-white/5 text-center space-y-1">
+                <div className="text-2xl font-extrabold text-[#3B82F6]">{r.metric}</div>
+                <div className="text-[10px] text-[#EDEDED]/50 font-mono uppercase tracking-wider">{r.label}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Visual Gallery */}
+        <section className="space-y-8">
+          <h2 className="text-2xl font-bold text-white">System Gallery</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              { src: '/assets/defect_analysis_dashboard.png', caption: 'Anomaly Analysis Dashboard' },
+              { src: '/assets/defect_api_visualizer.png', caption: 'API Response Visualizer' },
+              { src: '/assets/defect_conveyor_inspection.png', caption: 'Conveyor Inspection Feed' },
+              { src: '/assets/defect_pipeline_architecture.png', caption: 'Training & Deployment Pipeline' }
+            ].map((img, i) => (
+              <div key={i} className="rounded-xl overflow-hidden border border-white/10 bg-[#0b0b0b] hover:border-[#3B82F6]/30 transition-colors">
+                <img src={img.src} alt={img.caption} className="w-full h-auto" />
+                <div className="p-3 text-xs text-[#EDEDED]/50 font-mono text-center">{img.caption}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="linear-card-gradient linear-border rounded-lg p-8 md:p-12 text-center space-y-6 relative overflow-hidden">
+          <div className="absolute inset-0 bg-radial at-center from-[#3B82F6]/5 to-transparent opacity-50 pointer-events-none" />
+          <div className="max-w-xl mx-auto space-y-3 relative z-10">
+            <h3 className="text-2xl font-bold text-white">Need an automated quality inspection system?</h3>
+            <p className="text-sm text-[#EDEDED]/60 font-light">Let's build a vision-powered defect detection pipeline for your manufacturing line.</p>
+          </div>
+          <div className="flex flex-wrap justify-center items-center gap-4 relative z-10">
+            <a href="mailto:kirtagya.rao@gmail.com?subject=Defect%20Detection%20Inquiry" className="inline-flex items-center justify-center px-8 py-3.5 bg-white text-black font-semibold rounded-lg text-sm hover:bg-[#EDEDED] transition-colors shadow-lg">
+              <Mail className="w-4 h-4 mr-2" />
+              Let's talk
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer className="border-t border-white/5 mt-auto">
+        <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#EDEDED]/30 gap-4">
+          <span>&copy; {new Date().getFullYear()} KT RAO. All rights reserved.</span>
+          <a href="#" className="hover:text-white transition-colors">Portfolio</a>
+        </div>
+      </footer>
+    </div>
+  )
+
+  // ─── Retail Shelf Monitor Detail Page ─────────────────────────────────
+  const renderShelfMonitor = () => (
+    <div className="min-h-screen linear-gradient-bg selection:bg-[#3B82F6]/30 selection:text-white flex flex-col font-sans relative overflow-hidden">
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#3B82F6]/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-[#050505]/70 border-b border-white/5">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="#" className="inline-flex items-center gap-2 text-[#EDEDED]/60 hover:text-white transition-colors text-sm">
+            <ArrowLeft className="w-4 h-4" />
+            Back to Portfolio
+          </a>
+          <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono border border-emerald-500/20">Computer Vision</span>
+        </div>
+      </header>
+
+      <main className="max-w-6xl mx-auto px-6 py-16 space-y-20 flex-1">
+
+        {/* Hero */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-6 space-y-6">
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              Retail Shelf Monitor
+            </h1>
+            <p className="text-base text-[#EDEDED]/60 leading-relaxed font-light max-w-xl">
+              An AI-driven shelf analysis system that detects stock levels (Full, Low, Empty) across retail aisles using YOLOv8 object detection, paired with a Next.js drag-and-drop upload dashboard for store managers.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {['YOLOv8', 'Next.js', 'Python', 'FastAPI', 'TailwindCSS'].map((tag) => (
+                <span key={tag} className="px-3 py-1 text-xs font-mono rounded-full bg-white/5 text-[#EDEDED]/70 border border-white/5">{tag}</span>
+              ))}
+            </div>
+            <div className="flex flex-wrap items-center gap-4 pt-4">
+              <a href="mailto:kirtagya.rao@gmail.com?subject=Shelf%20Monitor%20Inquiry" className="inline-flex items-center justify-center px-6 py-3 bg-white text-black font-semibold rounded-lg text-sm hover:bg-[#EDEDED] transition-colors">
+                <Mail className="w-4 h-4 mr-2" />
+                Discuss This Project
+              </a>
+            </div>
+          </div>
+          <div className="lg:col-span-6 flex justify-center">
+            <div className="w-full max-w-lg rounded-xl overflow-hidden border border-white/10 bg-[#0b0b0b] shadow-2xl transition-all duration-300 hover:border-[#3B82F6]/30">
+              <img src="/assets/shelf_monitor_dashboard.png" alt="Shelf Monitor Dashboard" className="w-full h-auto" />
+            </div>
+          </div>
+        </section>
+
+        {/* Problem Statement */}
+        <section className="linear-card-gradient linear-border rounded-lg p-8 md:p-12 space-y-6">
+          <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+            <span className="p-2 rounded-md bg-rose-500/10 text-rose-400 border border-rose-500/20"><ShieldCheck className="w-5 h-5" /></span>
+            The Problem
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { title: 'Out-of-Stock Revenue Loss', desc: 'Retailers lose 4-8% of annual revenue due to out-of-stock items that go undetected until daily manual audits.' },
+              { title: 'Manual Shelf Audits', desc: 'Store associates spend 2-3 hours per shift on manual aisle walks, often missing low-stock sections in high-traffic zones.' },
+              { title: 'Delayed Restock Signals', desc: 'Without real-time detection, restock requests lag by 6-12 hours, causing avoidable empty-shelf periods.' }
+            ].map((item, i) => (
+              <div key={i} className="p-5 rounded-lg bg-[#050505] border border-white/5 space-y-2">
+                <h3 className="text-sm font-semibold text-white">{item.title}</h3>
+                <p className="text-xs text-[#EDEDED]/50 leading-relaxed font-light">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Engineering Solution */}
+        <section className="space-y-8">
+          <h2 className="text-2xl font-bold text-white">Engineering Solution</h2>
+          <div className="space-y-6">
+            {[
+              { step: '01', title: 'Custom Dataset Annotation', desc: 'Annotated 5,000+ grocery shelf images across 3 classes (Full, Low, Empty) using Roboflow. Applied tile augmentation for dense shelf layouts.' },
+              { step: '02', title: 'YOLOv8 Fine-Tuning', desc: 'Fine-tuned a YOLOv8s model for 120 epochs achieving 94.2% mAP@0.5. Optimized for inference on commodity hardware (no GPU required for deployment).' },
+              { step: '03', title: 'Stock Analyzer Logic', desc: 'Built a post-processing module that aggregates per-section detection counts into shelf occupancy percentages and triggers restock alerts when occupancy drops below 40%.' },
+              { step: '04', title: 'Next.js Upload Dashboard', desc: 'Created a responsive drag-and-drop frontend where store managers upload shelf photos and receive instant annotated results with color-coded bounding boxes.' }
+            ].map((item, i) => (
+              <div key={i} className="flex gap-6 items-start">
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6] text-sm font-bold font-mono">{item.step}</div>
+                <div className="space-y-1">
+                  <h3 className="text-base font-semibold text-white">{item.title}</h3>
+                  <p className="text-sm text-[#EDEDED]/50 leading-relaxed font-light">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Results & ROI */}
+        <section className="linear-card-gradient linear-border rounded-lg p-8 md:p-12 space-y-8">
+          <h2 className="text-2xl font-bold text-white">Results & ROI</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { metric: '94.2%', label: 'Detection Accuracy (mAP@0.5)' },
+              { metric: '35%', label: 'Faster Restock Response' },
+              { metric: '3', label: 'Stock Level Classes' },
+              { metric: '<2s', label: 'Upload-to-Result Latency' }
+            ].map((r, i) => (
+              <div key={i} className="p-5 rounded-lg bg-[#050505] border border-white/5 text-center space-y-1">
+                <div className="text-2xl font-extrabold text-[#3B82F6]">{r.metric}</div>
+                <div className="text-[10px] text-[#EDEDED]/50 font-mono uppercase tracking-wider">{r.label}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Visual Gallery */}
+        <section className="space-y-8">
+          <h2 className="text-2xl font-bold text-white">System Gallery</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              { src: '/assets/shelf_monitor_dashboard.png', caption: 'Shelf Analysis Dashboard' },
+              { src: '/assets/shelf_stock_statistics.png', caption: 'Stock Statistics Report' },
+              { src: '/assets/shelf_upload_interface.png', caption: 'Image Upload Interface' },
+              { src: '/assets/shelf_system_architecture.png', caption: 'System Architecture' }
+            ].map((img, i) => (
+              <div key={i} className="rounded-xl overflow-hidden border border-white/10 bg-[#0b0b0b] hover:border-[#3B82F6]/30 transition-colors">
+                <img src={img.src} alt={img.caption} className="w-full h-auto" />
+                <div className="p-3 text-xs text-[#EDEDED]/50 font-mono text-center">{img.caption}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="linear-card-gradient linear-border rounded-lg p-8 md:p-12 text-center space-y-6 relative overflow-hidden">
+          <div className="absolute inset-0 bg-radial at-center from-[#3B82F6]/5 to-transparent opacity-50 pointer-events-none" />
+          <div className="max-w-xl mx-auto space-y-3 relative z-10">
+            <h3 className="text-2xl font-bold text-white">Want to automate your shelf auditing?</h3>
+            <p className="text-sm text-[#EDEDED]/60 font-light">Let's build a real-time inventory intelligence system for your retail operation.</p>
+          </div>
+          <div className="flex flex-wrap justify-center items-center gap-4 relative z-10">
+            <a href="mailto:kirtagya.rao@gmail.com?subject=Shelf%20Monitor%20Inquiry" className="inline-flex items-center justify-center px-8 py-3.5 bg-white text-black font-semibold rounded-lg text-sm hover:bg-[#EDEDED] transition-colors shadow-lg">
+              <Mail className="w-4 h-4 mr-2" />
+              Let's talk
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer className="border-t border-white/5 mt-auto">
+        <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#EDEDED]/30 gap-4">
+          <span>&copy; {new Date().getFullYear()} KT RAO. All rights reserved.</span>
+          <a href="#" className="hover:text-white transition-colors">Portfolio</a>
+        </div>
+      </footer>
+    </div>
+  )
+
+  // ─── Package Sorting System Detail Page ───────────────────────────────
+  const renderSortingSystem = () => (
+    <div className="min-h-screen linear-gradient-bg selection:bg-[#3B82F6]/30 selection:text-white flex flex-col font-sans relative overflow-hidden">
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#3B82F6]/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-[#050505]/70 border-b border-white/5">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="#" className="inline-flex items-center gap-2 text-[#EDEDED]/60 hover:text-white transition-colors text-sm">
+            <ArrowLeft className="w-4 h-4" />
+            Back to Portfolio
+          </a>
+          <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono border border-emerald-500/20">Computer Vision</span>
+        </div>
+      </header>
+
+      <main className="max-w-6xl mx-auto px-6 py-16 space-y-20 flex-1">
+
+        {/* Hero */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-6 space-y-6">
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              Package Sorting System
+            </h1>
+            <p className="text-base text-[#EDEDED]/60 leading-relaxed font-light max-w-xl">
+              A deep association tracking pipeline that combines YOLOv8 detection with OSNet Re-ID embeddings and Hungarian matching to automatically identify, track, and sort multi-class packages on industrial conveyor belts.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {['YOLOv8', 'OSNet', 'DeepSORT', 'Python', 'Flask', 'OpenCV'].map((tag) => (
+                <span key={tag} className="px-3 py-1 text-xs font-mono rounded-full bg-white/5 text-[#EDEDED]/70 border border-white/5">{tag}</span>
+              ))}
+            </div>
+            <div className="flex flex-wrap items-center gap-4 pt-4">
+              <a href="mailto:kirtagya.rao@gmail.com?subject=Package%20Sorting%20System%20Inquiry" className="inline-flex items-center justify-center px-6 py-3 bg-white text-black font-semibold rounded-lg text-sm hover:bg-[#EDEDED] transition-colors">
+                <Mail className="w-4 h-4 mr-2" />
+                Discuss This Project
+              </a>
+            </div>
+          </div>
+          <div className="lg:col-span-6 flex justify-center">
+            <div className="w-full max-w-lg rounded-xl overflow-hidden border border-white/10 bg-[#0b0b0b] shadow-2xl transition-all duration-300 hover:border-[#3B82F6]/30">
+              <img src="/assets/package_conveyor_tracking.png" alt="Package Conveyor Tracking" className="w-full h-auto" />
+            </div>
+          </div>
+        </section>
+
+        {/* Problem Statement */}
+        <section className="linear-card-gradient linear-border rounded-lg p-8 md:p-12 space-y-6">
+          <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+            <span className="p-2 rounded-md bg-rose-500/10 text-rose-400 border border-rose-500/20"><ShieldCheck className="w-5 h-5" /></span>
+            The Problem
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { title: 'Manual Package Categorization', desc: 'Warehouse workers manually read labels and route packages, limiting throughput to ~200 packages/hour with 5-8% mis-sort rates.' },
+              { title: 'Identity Loss Across Cameras', desc: 'Multi-camera conveyor systems lose package identity at handoff points, making end-to-end tracking impossible without barcode scanning.' },
+              { title: 'Scalability Constraints', desc: 'Adding more sorting lanes requires proportional staffing increases, making linear scaling economically unfeasible for peak seasons.' }
+            ].map((item, i) => (
+              <div key={i} className="p-5 rounded-lg bg-[#050505] border border-white/5 space-y-2">
+                <h3 className="text-sm font-semibold text-white">{item.title}</h3>
+                <p className="text-xs text-[#EDEDED]/50 leading-relaxed font-light">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Engineering Solution */}
+        <section className="space-y-8">
+          <h2 className="text-2xl font-bold text-white">Engineering Solution</h2>
+          <div className="space-y-6">
+            {[
+              { step: '01', title: 'YOLOv8 Package Detection', desc: 'Trained YOLOv8m on 8,000+ annotated conveyor images across 6 package classes (Small Box, Large Box, Envelope, Tube, Poly Bag, Irregular). Achieved 97.1% mAP@0.5.' },
+              { step: '02', title: 'OSNet Feature Extraction', desc: 'Integrated OSNet (Omni-Scale Network) to extract 512-dimensional appearance embeddings for each detected package, enabling visual re-identification without barcode dependency.' },
+              { step: '03', title: 'Hungarian Matching & DeepSORT', desc: 'Combined Kalman filter motion prediction with cosine distance on OSNet embeddings using the Hungarian algorithm for optimal detection-to-track assignment across frames.' },
+              { step: '04', title: 'Automated Sorting & Routing', desc: 'Mapped tracked package classes to destination bins via a configurable routing table. Flask API serves real-time sorting decisions with 12ms average latency.' }
+            ].map((item, i) => (
+              <div key={i} className="flex gap-6 items-start">
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6] text-sm font-bold font-mono">{item.step}</div>
+                <div className="space-y-1">
+                  <h3 className="text-base font-semibold text-white">{item.title}</h3>
+                  <p className="text-sm text-[#EDEDED]/50 leading-relaxed font-light">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Results & ROI */}
+        <section className="linear-card-gradient linear-border rounded-lg p-8 md:p-12 space-y-8">
+          <h2 className="text-2xl font-bold text-white">Results & ROI</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { metric: '99.4%', label: 'Sorting Match Rate' },
+              { metric: '12ms', label: 'Avg Sorting Latency' },
+              { metric: '6', label: 'Package Classes Tracked' },
+              { metric: '1,847+', label: 'Packages Sorted/Hour' }
+            ].map((r, i) => (
+              <div key={i} className="p-5 rounded-lg bg-[#050505] border border-white/5 text-center space-y-1">
+                <div className="text-2xl font-extrabold text-[#3B82F6]">{r.metric}</div>
+                <div className="text-[10px] text-[#EDEDED]/50 font-mono uppercase tracking-wider">{r.label}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Visual Gallery */}
+        <section className="space-y-8">
+          <h2 className="text-2xl font-bold text-white">System Gallery</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              { src: '/assets/package_conveyor_tracking.png', caption: 'Conveyor Tracking Feed' },
+              { src: '/assets/package_reid_embeddings.png', caption: 'Re-ID Embedding Visualization' },
+              { src: '/assets/package_sorting_destination.png', caption: 'Sorting Operations Dashboard' },
+              { src: '/assets/package_tracker_architecture.png', caption: 'Deep Association Tracking Architecture' }
+            ].map((img, i) => (
+              <div key={i} className="rounded-xl overflow-hidden border border-white/10 bg-[#0b0b0b] hover:border-[#3B82F6]/30 transition-colors">
+                <img src={img.src} alt={img.caption} className="w-full h-auto" />
+                <div className="p-3 text-xs text-[#EDEDED]/50 font-mono text-center">{img.caption}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="linear-card-gradient linear-border rounded-lg p-8 md:p-12 text-center space-y-6 relative overflow-hidden">
+          <div className="absolute inset-0 bg-radial at-center from-[#3B82F6]/5 to-transparent opacity-50 pointer-events-none" />
+          <div className="max-w-xl mx-auto space-y-3 relative z-10">
+            <h3 className="text-2xl font-bold text-white">Need an intelligent package sorting solution?</h3>
+            <p className="text-sm text-[#EDEDED]/60 font-light">Let's build a vision-powered tracking and sorting pipeline for your logistics operation.</p>
+          </div>
+          <div className="flex flex-wrap justify-center items-center gap-4 relative z-10">
+            <a href="mailto:kirtagya.rao@gmail.com?subject=Package%20Sorting%20Inquiry" className="inline-flex items-center justify-center px-8 py-3.5 bg-white text-black font-semibold rounded-lg text-sm hover:bg-[#EDEDED] transition-colors shadow-lg">
+              <Mail className="w-4 h-4 mr-2" />
+              Let's talk
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer className="border-t border-white/5 mt-auto">
+        <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#EDEDED]/30 gap-4">
+          <span>&copy; {new Date().getFullYear()} KT RAO. All rights reserved.</span>
+          <a href="#" className="hover:text-white transition-colors">Portfolio</a>
+        </div>
+      </footer>
+    </div>
+  )
+
   return (
     <>
-      {view === 'proofstudio' ? renderProofStudio() : view === 'rssavoury' ? renderRSSavoury() : view === 'ucrs' ? renderUCRS() : renderHome()}
+      {view === 'proofstudio' ? renderProofStudio() : view === 'rssavoury' ? renderRSSavoury() : view === 'ucrs' ? renderUCRS() : view === 'defect-detection' ? renderDefectDetection() : view === 'shelf-monitor' ? renderShelfMonitor() : view === 'sorting-system' ? renderSortingSystem() : renderHome()}
 
       {/* WORKFLOW MODAL DIALOG */}
       {isWorkflowOpen && (
